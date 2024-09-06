@@ -1,0 +1,30 @@
+.remove-inventory-card {
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.remove-inventory-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.remove-inventory-actions {
+  margin-top: 20px;
+}
+
+.mat-success {
+  color: green;
+  margin-top: 20px;
+}
+
+.mat-error {
+  color: red;
+  margin-top: 20px;
+}
+
+.mat-card-title {
+  font-weight: bold;
+  text-align: center;
+}

@@ -1,0 +1,71 @@
+<mat-card class="add-edit-inventory-card">
+  <mat-card-header>
+    <mat-card-title>{{ isEditMode ? 'Edit Inventory Item' : 'Add Inventory Item' }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="inventoryForm" (ngSubmit)="onSubmit()" class="inventory-form">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="part_name" placeholder="Enter the name" />
+        <mat-error *ngIf="inventoryForm.controls['part_name'].invalid && (inventoryForm.controls['part_name'].dirty || inventoryForm.controls['part_name'].touched)">
+          Name is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Part Number</mat-label>
+        <input matInput formControlName="part_number" placeholder="Enter the part number" />
+        <mat-error *ngIf="inventoryForm.controls['part_number'].invalid && (inventoryForm.controls['part_number'].dirty || inventoryForm.controls['part_number'].touched)">
+          Part Number is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Quantity</mat-label>
+        <input matInput formControlName="quantity" type="number" placeholder="Enter the quantity" />
+        <mat-error *ngIf="inventoryForm.controls['quantity'].invalid && (inventoryForm.controls['quantity'].dirty || inventoryForm.controls['quantity'].touched)">
+          Quantity is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Price</mat-label>
+        <input matInput formControlName="price" type="number" placeholder="Enter the price" />
+        <mat-error *ngIf="inventoryForm.controls['price'].invalid && (inventoryForm.controls['price'].dirty || inventoryForm.controls['price'].touched)">
+          Price is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Supplier</mat-label>
+        <input matInput formControlName="supplier" placeholder="Enter the supplier" />
+        <mat-error *ngIf="inventoryForm.controls['supplier'].invalid && (inventoryForm.controls['supplier'].dirty || inventoryForm.controls['supplier'].touched)">
+          Supplier is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Supplier ID</mat-label>
+        <input matInput formControlName="supplier_id" type="number" placeholder="Enter the supplier ID" />
+        <mat-error *ngIf="inventoryForm.controls['supplier_id'].invalid && (inventoryForm.controls['supplier_id'].dirty || inventoryForm.controls['supplier_id'].touched)">
+          Supplier ID is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Category ID</mat-label>
+        <input matInput formControlName="category_id" type="number" placeholder="Enter the category ID" />
+        <mat-error *ngIf="inventoryForm.controls['category_id'].invalid && (inventoryForm.controls['category_id'].dirty || inventoryForm.controls['category_id'].touched)">
+          Category ID is required.
+        </mat-error>
+      </mat-form-field>
+
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="inventoryForm.invalid">
+          {{ isEditMode ? 'Update Item' : 'Add Item' }}
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+

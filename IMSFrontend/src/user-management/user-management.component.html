@@ -1,0 +1,35 @@
+<div class="user-management-container">
+  <h2 class="title">User Management</h2> <!-- Bold Title -->
+
+  <mat-table [dataSource]="users" class="mat-elevation-z8">
+    <!-- Username Column -->
+    <ng-container matColumnDef="username">
+      <mat-header-cell *matHeaderCellDef class="header-cell"> Username </mat-header-cell> <!-- Bold Column Name -->
+      <mat-cell *matCellDef="let user"> {{user.username}} </mat-cell>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef class="header-cell"> Email </mat-header-cell> <!-- Bold Column Name -->
+      <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
+    </ng-container>
+
+    <!-- Role Column -->
+    <ng-container matColumnDef="role">
+      <mat-header-cell *matHeaderCellDef class="header-cell"> Role </mat-header-cell> <!-- Bold Column Name -->
+      <mat-cell *matCellDef="let user"> {{user.role}} </mat-cell>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef class="header-cell"> Action </mat-header-cell> <!-- Bold Column Name -->
+      <mat-cell *matCellDef="let user">
+        <button mat-button color="accent" (click)="editUser(user.id)">Edit</button>
+        <button mat-button color="warn" (click)="deleteUser(user.id)">Delete</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

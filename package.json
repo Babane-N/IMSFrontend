@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@angular/cli": "^18.2.0",
+    "@angular/material": "^18.2.2"
+  }
+}

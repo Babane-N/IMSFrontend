@@ -1,0 +1,75 @@
+<div class="dashboard-container">
+  <!-- Dashboard Title -->
+  <h2>Dashboard</h2>
+
+  <!-- Stats Section -->
+  <div class="stats-section">
+    <mat-card class="stat-card">
+      <mat-card-header>
+        <mat-card-title>Total Inventory Items</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <h3>{{ totalInventory }}</h3>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <mat-card-header>
+        <mat-card-title>Low Stock Alerts</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <h3>{{ lowStockAlerts }}</h3>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <mat-card-header>
+        <mat-card-title>Total Orders</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <h3>{{ totalOrders }}</h3>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <mat-card-header>
+        <mat-card-title>Pending Orders</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <h3>{{ pendingOrders }}</h3>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Navigation Links -->
+  <div class="navigation-section">
+    <button mat-raised-button color="primary" routerLink="/inventory-list">Manage Inventory</button>
+    <button mat-raised-button color="accent" routerLink="/order-management">Manage Orders</button>
+    <button mat-raised-button color="warn" routerLink="/reports">View Reports</button>
+    <button mat-raised-button color="primary" routerLink="/user-management">Manage Users</button>
+  </div>
+
+  <!-- Recent Activities Section -->
+  <div class="recent-activities-section">
+    <h3>Recent Activities</h3>
+    <mat-list>
+      <mat-list-item *ngFor="let activity of recentActivities">
+        <mat-icon mat-list-icon>event_note</mat-icon>
+        <h4 mat-line>{{ activity.title }}</h4>
+        <p mat-line>{{ activity.date | date:'short' }}</p>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+  <!-- Alerts Section -->
+  <div class="alerts-section">
+    <h3>Alerts</h3>
+    <mat-list>
+      <mat-list-item *ngFor="let alert of alerts">
+        <mat-icon mat-list-icon>warning</mat-icon>
+        <h4 mat-line>{{ alert.message }}</h4>
+        <p mat-line>{{ alert.date | date:'short' }}</p>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>

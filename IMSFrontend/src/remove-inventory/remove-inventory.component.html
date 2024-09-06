@@ -1,0 +1,35 @@
+<mat-card class="remove-inventory-card">
+  <mat-card-header>
+    <mat-card-title>Remove Inventory Item</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form (ngSubmit)="onDelete()" #removeInventoryForm="ngForm" class="remove-inventory-form">
+      <mat-form-field appearance="fill">
+        <mat-label>Part Number</mat-label>
+        <input matInput
+               placeholder="Enter part number to remove"
+               name="partNumber"
+               [(ngModel)]="partNumber"
+               required
+               #partNumberInput="ngModel" />
+        <mat-error *ngIf="partNumberInput.invalid && (partNumberInput.dirty || partNumberInput.touched)">
+          Part number is required.
+        </mat-error>
+      </mat-form-field>
+
+      <div class="remove-inventory-actions">
+        <button mat-raised-button color="warn" type="submit" [disabled]="removeInventoryForm.invalid">
+          Remove
+        </button>
+      </div>
+
+      <div *ngIf="successMessage" class="mat-success mt-3">
+        {{ successMessage }}
+      </div>
+      <div *ngIf="errorMessage" class="mat-error mt-3">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+

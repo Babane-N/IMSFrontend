@@ -1,0 +1,69 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+}
+
+.login-card {
+  max-width: 400px; /* Adjust width as needed */
+  width: 100%; /* Ensure card width is responsive */
+  padding: 20px; /* Add padding inside the card */
+  background-color: #ffffff; /* White background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  text-align: center;
+}
+
+.mat-card-header {
+  text-align: center; /* Center the title */
+  padding-bottom: 16px; /* Space between title and form */
+}
+
+.mat-card-title {
+  font-size: 24px; /* Font size for title */
+  font-weight: 500; /* Medium font weight */
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column; /* Arrange form elements vertically */
+}
+
+.mat-form-field {
+  width: 100%; /* Full width for form fields */
+  margin-bottom: 16px; /* Space between fields */
+}
+
+  .mat-form-field .mat-form-field-label {
+    color: #333; /* Label color */
+  }
+
+  .mat-form-field .mat-form-field-underline {
+    background-color: #007bff; /* Customize underline color */
+  }
+
+  .mat-form-field .mat-form-field-ripple {
+    background-color: #007bff; /* Customize ripple color */
+  }
+
+.mat-error {
+  font-size: 0.875rem; /* Font size for error messages */
+  color: #f44336; /* Error color */
+}
+
+.login-actions {
+  margin-top: 16px; /* Space between form fields and button */
+}
+
+button {
+  width: 100%; /* Full width button */
+  padding: 12px; /* Padding for button */
+  font-size: 16px; /* Font size for button */
+}
+
+.error-message {
+  color: #f44336; /* Color for error message */
+  text-align: center; /* Center the error message */
+  margin-top: 16px; /* Space above the error message */
+}

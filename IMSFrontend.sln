@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "IMSFrontend", "IMSFrontend\IMSFrontend.esproj", "{E0B0D3BC-CB33-49CF-AD45-E438191B7506}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMSBackend", "IMSBackend\IMSBackend.csproj", "{B24F0C46-267C-45A0-8194-DFF32246F353}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0B0D3BC-CB33-49CF-AD45-E438191B7506}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0B0D3BC-CB33-49CF-AD45-E438191B7506}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0B0D3BC-CB33-49CF-AD45-E438191B7506}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E0B0D3BC-CB33-49CF-AD45-E438191B7506}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0B0D3BC-CB33-49CF-AD45-E438191B7506}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0B0D3BC-CB33-49CF-AD45-E438191B7506}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B24F0C46-267C-45A0-8194-DFF32246F353}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B24F0C46-267C-45A0-8194-DFF32246F353}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B24F0C46-267C-45A0-8194-DFF32246F353}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B24F0C46-267C-45A0-8194-DFF32246F353}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3F341739-A5FF-461B-A95B-597C2FD04A70}
+	EndGlobalSection
+EndGlobal

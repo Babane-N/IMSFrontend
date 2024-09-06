@@ -1,0 +1,27 @@
+.order-management-container {
+  text-align: center;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  mat-table {
+    width: 100%;
+
+    mat-header-cell {
+      font-weight: bold;
+    }
+
+    mat-cell {
+      font-size: 0.9rem;
+    }
+
+    mat-button {
+      margin-right: 10px;
+    }
+  }
+}

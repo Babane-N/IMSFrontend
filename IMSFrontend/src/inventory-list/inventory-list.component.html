@@ -1,0 +1,50 @@
+<h1>Inventory List</h1>
+<p *ngIf="!inventories">Loading...</p>
+
+<mat-form-field *ngIf="inventories">
+  <input matInput #filter (keyup)="loadData(filter.value)"
+         placeholder="Filter by part_name (or part of it)...">
+</mat-form-field>
+
+<table mat-table [dataSource]="inventories"
+       class="mat-elevation-z8"
+       matSort
+       [matSortActive]="defaultSortColumn"
+       [matSortDirection]="defaultSortOrder">
+
+  <!-- Part Name Column -->
+  <ng-container matColumnDef="part_name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Part Name</th>
+    <td mat-cell *matCellDef="let inventory">{{ inventory.part_name }}</td>
+  </ng-container>
+
+  <!-- Part Number Column -->
+  <ng-container matColumnDef="part_number">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Part Number</th>
+    <td mat-cell *matCellDef="let inventory">{{ inventory.part_number }}</td>
+  </ng-container>
+
+  <!-- Quantity Column -->
+  <ng-container matColumnDef="quantity">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
+    <td mat-cell *matCellDef="let inventory">{{ inventory.quantity }}</td>
+  </ng-container>
+
+  <!-- Price Column -->
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+    <td mat-cell *matCellDef="let inventory">{{ inventory.price }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<!-- Pagination directive -->
+<mat-paginator *ngIf="inventories"
+               (page)="getData($event)"
+               [pageSize]="defaultPageSize"
+               [pageSizeOptions]="[5, 10, 25]"
+               showFirstLastButtons></mat-paginator>
+
+
