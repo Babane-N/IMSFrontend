@@ -1,0 +1,97 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background-color: #f4f7f6; /* Light background color */
+}
+
+.register-card {
+  max-width: 400px; /* Adjust width as needed */
+  width: 100%; /* Ensure card width is responsive */
+  padding: 20px; /* Add padding inside the card */
+  background-color: #ffffff; /* White background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  text-align: center;
+}
+
+.mat-card-header {
+  padding-bottom: 16px; /* Space between title and form */
+}
+
+.mat-card-title {
+  font-size: 24px; /* Font size for title */
+  font-weight: 500; /* Medium font weight */
+  color: #333; /* Dark text color for better readability */
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column; /* Arrange form elements vertically */
+}
+
+.field {
+  margin-bottom: 16px; /* Space between fields */
+  width: 100%; /* Full width for form fields */
+}
+
+label {
+  display: block; /* Ensure labels take up full width */
+  margin-bottom: 8px; /* Space between label and input */
+  font-weight: 500; /* Medium font weight for labels */
+  color: #333; /* Dark text color for labels */
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%; /* Full width for inputs */
+  padding: 12px; /* Padding inside inputs */
+  border: 1px solid #ddd; /* Light border for inputs */
+  border-radius: 4px; /* Rounded corners for inputs */
+  font-size: 16px; /* Font size inside inputs */
+  box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #007bff; /* Border color on focus */
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2); /* Subtle shadow on focus */
+}
+
+small {
+  display: block; /* Ensure error messages take up full width */
+  color: #f44336; /* Error color */
+  font-size: 0.875rem; /* Font size for error messages */
+  margin-top: 4px; /* Space above error message */
+}
+
+p-button {
+  width: 100%; /* Full width button */
+  padding: 12px; /* Padding for button */
+  font-size: 16px; /* Font size for button */
+  background-color: #007bff; /* Primary button color */
+  color: #ffffff; /* Text color for button */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+p-button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+.register-actions {
+  margin-top: 16px; /* Space between form fields and link */
+}
+
+a {
+  color: #007bff; /* Link color */
+  text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+  text-decoration: underline; /* Underline on hover */
+}

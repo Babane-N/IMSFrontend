@@ -9,7 +9,7 @@ const port = 40080;
 const dbConfig = {
     user: 'sa',
     password: 'HoneyPot60!',
-    server: 'babane_n//SQLEXPRESS',
+    server: 'NKHULULEKO\\SQLEXPRESS',
     database: 'car_parts_business_db',
     options: {
         encrypt: true,
@@ -130,6 +130,41 @@ app.delete('/api/InventoryItems/:id', (req, res) => {
     });
 });
 
+// Delete an inventory item by Part Number
+app.delete('/api/InventoryItems/part-number/:partNumber', (req, res) => {
+    const partNumber = req.params.partNumber;
+
+    console.log(`Attempting to delete part with part_number: ${partNumber}`);
+
+    const query = 'DELETE FROM inventory WHERE part_number = @partNumber';
+    const request = new sql.Request();
+    request.input('partNumber', sql.VarChar, partNumber);
+
+    request.query(query, (err, result) => {
+        if (err) {
+            console.error('Error deleting data:', err);
+            return res.status(500).json({
+                error: 'Internal Server Error',
+                details: err.message
+            });
+        }
+
+        // Check if any rows were affected (i.e., if any part was deleted)
+        if (result.rowsAffected[0] === 0) {
+            console.warn(`Part with part_number ${partNumber} not found.`);
+            return res.status(404).json({
+                error: 'Inventory item not found'
+            });
+        }
+
+        console.log(`Part with part_number ${partNumber} deleted successfully.`);
+        res.json({
+            message: 'Inventory item deleted successfully'
+        });
+    });
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
+
+

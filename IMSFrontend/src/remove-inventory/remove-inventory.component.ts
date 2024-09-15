@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { InventoryService } from '../inventory.service';
 
 @Component({
   selector: 'app-remove-inventory',
@@ -11,27 +11,28 @@ export class RemoveInventoryComponent {
   successMessage: string | null = null;
   errorMessage: string | null = null;
 
-  constructor(private http: HttpClient) { }
+  constructor(private inventoryService: InventoryService) { }
 
-  onDelete(): void {
+  deleteInventoryByPartNumber(): void {
     this.successMessage = null;
     this.errorMessage = null;
 
     if (this.partNumber) {
-      this.http.delete(`http://localhost:40080/api/InventoryItems/${this.partNumber}`).subscribe(
+      this.inventoryService.deleteInventoryByPartNumber(this.partNumber).subscribe(
         () => {
           this.successMessage = `Part ${this.partNumber} removed successfully.`;
-          this.errorMessage = '';
           this.partNumber = ''; // Reset the input field
         },
         error => {
           console.error('Error removing item', error);
-          this.errorMessage = `Failed to remove part ${this.partNumber}.`;
-          this.successMessage = '';
+          this.errorMessage = `Failed to remove part ${this.partNumber}. Please try again.`;
         }
       );
+    } else {
+      this.errorMessage = 'Please enter a valid part number.';
     }
   }
 }
+
 
 

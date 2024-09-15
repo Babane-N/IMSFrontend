@@ -51,18 +51,36 @@ export class RegisterComponent implements OnInit {
   }
 
   submitDetails() {
+    // Extract the form values and remove the confirmPassword field
     const postData = { ...this.registerForm.value };
     delete postData.confirmPassword;
 
-    // Update to the new subscribe signature
+    // Update the subscription to use the new syntax
     this.authService.registerUser(postData as User).subscribe({
-      next: response => {
+      next: (response) => {
+        // Log the response for debugging
         console.log(response);
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Registered successfully' });
+
+        // Show a success message to the user
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Registration Successful',
+          detail: 'You have registered successfully.'
+        });
+
+        // Navigate to the login page
         this.router.navigate(['login']);
       },
-      error: err => {
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });
+      error: (err) => {
+        // Log the error for debugging
+        console.error('Registration error:', err);
+
+        // Show an error message to the user
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Registration Error',
+          detail: 'An error occurred while registering. Please try again.'
+        });
       }
     });
   }

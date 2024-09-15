@@ -3,7 +3,7 @@
     <mat-card-title>Remove Inventory Item</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form (ngSubmit)="onDelete()" #removeInventoryForm="ngForm" class="remove-inventory-form">
+    <form (ngSubmit)="deleteInventoryByPartNumber()" #removeInventoryForm="ngForm" class="remove-inventory-form">
       <mat-form-field appearance="fill">
         <mat-label>Part Number</mat-label>
         <input matInput

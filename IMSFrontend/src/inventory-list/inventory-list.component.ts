@@ -62,6 +62,8 @@ export class InventoryListComponent implements OnInit {
       .subscribe(result => {
         
         this.inventories = new MatTableDataSource<Inventory>(result.data);
+        this.inventories.paginator = this.paginator;
+        this.inventories.sort = this.sort;
       }, error => console.error(error));
   }
 }
