@@ -41,7 +41,7 @@ export class InventoryListComponent implements OnInit {
     this.getData(pageEvent);
   }
   getData(event: PageEvent) {
-    var url = environment.baseUrl + 'api/InventoryItems';
+    var url = environment.apiUrl + '/InventoryItems';
     var params = new HttpParams()
       .set("pageIndex", event.pageIndex.toString())
       .set("pageSize", event.pageSize.toString())

@@ -1,47 +1,36 @@
-<mat-card class="login-card">
-  <mat-card-header>
-    <mat-card-title>Login</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="login-form">
-      <mat-form-field appearance="fill">
-        <mat-label>Username</mat-label>
-        <input matInput
-               placeholder="Enter your username"
-               name="username"
-               ngModel
-               required
-               #username="ngModel" />
-        <mat-error *ngIf="username.invalid && (username.dirty || username.touched)">
-          Username is required.
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Password</mat-label>
-        <input matInput
-               type="password"
-               placeholder="Enter your password"
-               name="password"
-               ngModel
-               required
-               #password="ngModel" />
-        <mat-error *ngIf="password.invalid && (password.dirty || password.touched)">
-          Password is required.
-        </mat-error>
-      </mat-form-field>
-
-      <div class="login-actions">
-        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
-          Login
-        </button>
-      </div>
-
-      <div *ngIf="errorMessage" class="error-message">
-        {{ errorMessage }}
-      </div>
-    </form>
-  </mat-card-content>
-</mat-card>
-
-
+<form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+  <p-card header="Login" [style]="{ width: '360px' }">
+    <div class="field">
+      <label for="email">Email</label>
+      <input type="text"
+             pInputText
+             formControlName="email"
+             class="w-full"
+             name="email"
+             placeholder="Type your email" />
+      <small *ngIf="email?.invalid && (email?.dirty || email?.touched)"
+             class="block p-error">
+        <span *ngIf="email?.errors?.['required']">Email is required.</span>
+        <span *ngIf="email?.errors?.['email']">Email should be valid</span>
+      </small>
+    </div>
+    <div class="field">
+      <label for="password">Password</label>
+      <input type="password"
+             pInputText
+             formControlName="password"
+             class="w-full"
+             name="password"
+             placeholder="Type your password" />
+      <small *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+             class="block p-error">
+        <span *ngIf="password?.errors?.['required']">Password is required.</span>
+      </small>
+    </div>
+    <p-button label="SIGN IN"
+              styleClass="w-full"
+              [disabled]="loginForm.invalid"
+              type="submit"></p-button>
+    <div class="mt-2">Not a member? <a routerLink="/register">Register</a></div>
+  </p-card>
+</form>

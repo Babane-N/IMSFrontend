@@ -14,6 +14,7 @@ import { AngularMaterialModule } from '../angular-material.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { RegisterComponent } from '../register/register.component';
 import { LoginComponent } from '../login/login.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { InventoryListComponent } from '../inventory-list/inventory-list.component';
@@ -27,6 +28,7 @@ import { NavMenuComponent } from '../nav-menu/nav-menu.component';
 @NgModule({
   declarations: [
     AppComponent,
+    RegisterComponent,
     LoginComponent,
     DashboardComponent,
     InventoryListComponent,

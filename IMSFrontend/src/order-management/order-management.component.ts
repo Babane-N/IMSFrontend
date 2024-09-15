@@ -18,8 +18,8 @@ export class OrderManagementComponent implements OnInit {
   loadOrders(): void {
     // Load orders from the service
     this.orders = [
-      { orderId: 1234, customerName: 'John Doe', status: 'Pending' },
-      { orderId: 5678, customerName: 'Jane Smith', status: 'Shipped' }
+      { id: 1234, customerName: 'John Doe', status: 'Pending' },
+      { id: 5678, customerName: 'Jane Smith', status: 'Shipped' }
     ];
   }
 

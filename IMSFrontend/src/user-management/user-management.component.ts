@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from '../user.service';
 
 @Component({
@@ -8,16 +9,8 @@ import { UserService } from '../user.service';
 })
 export class UserManagementComponent implements OnInit {
   users: any[] = [];
-  displayedColumns: string[] = ['username', 'email', 'role', 'action'];
-
-  // Example data source; replace with actual data source
-  dataSource = this.users;
-
-  // Example data; replace with actual data
-  ELEMENT_DATA: any[] = [
-    { position: 1, name: 'John Doe' },
-    { position: 2, name: 'Jane Doe' }
-  ];
+  displayedColumns: string[] = ['username', 'role', 'created_at'];
+  dataSource = new MatTableDataSource<any>();
 
   constructor(private userService: UserService) { }
 
@@ -28,6 +21,10 @@ export class UserManagementComponent implements OnInit {
   loadUsers(): void {
     this.userService.getUsers().subscribe((data: any[]) => {
       this.users = data;
+      // If using Angular Material table, set dataSource here
+      this.dataSource = new MatTableDataSource(this.users);
+    }, error => {
+      console.error('Error loading users:', error);
     });
   }
 
@@ -38,7 +35,8 @@ export class UserManagementComponent implements OnInit {
   deleteUser(userId: number): void {
     this.userService.deleteUser(userId).subscribe(() => {
       this.loadUsers();
+    }, error => {
+      console.error('Error deleting user:', error);
     });
   }
 }
-
