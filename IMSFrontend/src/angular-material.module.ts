@@ -16,6 +16,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { CardModule } from 'primeng/card'
 import { ButtonModule } from 'primeng/button'
 import { InputTextModule } from 'primeng/inputtext';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { InputTextModule } from 'primeng/inputtext';
     ButtonModule,
     MatCardModule,
     InputTextModule,
-    CardModule
+    CardModule,
+    ZXingScannerModule
   ],
 
   exports: [
@@ -51,7 +53,8 @@ import { InputTextModule } from 'primeng/inputtext';
     MatCardModule,
     InputTextModule,
     MatSnackBarModule,
-    CardModule
+    CardModule,
+    ZXingScannerModule
   ],
   providers: [
     MessageService 

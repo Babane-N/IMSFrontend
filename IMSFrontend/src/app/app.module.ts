@@ -19,6 +19,7 @@ import { LoginComponent } from '../login/login.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { InventoryListComponent } from '../inventory-list/inventory-list.component';
 import { AddEditInventoryComponent } from '../add-edit-inventory/add-edit-inventory.component';
+import { BarcodeComponent } from '../barcode/barcode.component';
 import { RemoveInventoryComponent } from '../remove-inventory/remove-inventory.component';
 import { OrderManagementComponent } from '../order-management/order-management.component';
 import { ReportsComponent } from '../reports/reports.component';
@@ -33,6 +34,7 @@ import { NavMenuComponent } from '../nav-menu/nav-menu.component';
     DashboardComponent,
     InventoryListComponent,
     AddEditInventoryComponent,
+    BarcodeComponent,
     RemoveInventoryComponent,
     OrderManagementComponent,
     ReportsComponent,

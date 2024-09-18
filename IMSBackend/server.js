@@ -9,7 +9,7 @@ const port = 40080;
 const dbConfig = {
     user: 'sa',
     password: 'HoneyPot60!',
-    server: 'NKHULULEKO\\SQLEXPRESS',
+    server: 'babane_n\\SQLEXPRESS',
     database: 'car_parts_business_db',
     options: {
         encrypt: true,

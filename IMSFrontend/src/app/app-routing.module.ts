@@ -5,6 +5,7 @@ import { LoginComponent } from '../login/login.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { InventoryListComponent } from '../inventory-list/inventory-list.component';
 import { AddEditInventoryComponent } from '../add-edit-inventory/add-edit-inventory.component';
+import { BarcodeComponent } from '../barcode/barcode.component';
 import { OrderManagementComponent } from '../order-management/order-management.component';
 import { ReportsComponent } from '../reports/reports.component';
 import { UserManagementComponent } from '../user-management/user-management.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'inventory-list', component: InventoryListComponent },
   { path: 'add-edit-inventory', component: AddEditInventoryComponent },
+  { path: 'barcode', component: BarcodeComponent }, 
   { path: 'remove-inventory', component: RemoveInventoryComponent },
   { path: 'order-management', component: OrderManagementComponent },
   { path: 'reports', component: ReportsComponent },
