@@ -10,6 +10,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
 import { AngularMaterialModule } from '../angular-material.module';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +25,7 @@ import { RemoveInventoryComponent } from '../remove-inventory/remove-inventory.c
 import { OrderManagementComponent } from '../order-management/order-management.component';
 import { ReportsComponent } from '../reports/reports.component';
 import { UserManagementComponent } from '../user-management/user-management.component';
+import { UserEditComponent } from '../user-edit/user-edit.component';
 import { NavMenuComponent } from '../nav-menu/nav-menu.component';
 
 @NgModule({
@@ -39,6 +41,7 @@ import { NavMenuComponent } from '../nav-menu/nav-menu.component';
     OrderManagementComponent,
     ReportsComponent,
     UserManagementComponent,
+    UserEditComponent,
     NavMenuComponent
   ],
   imports: [
@@ -55,6 +58,7 @@ import { NavMenuComponent } from '../nav-menu/nav-menu.component';
     MatIconModule,
     MatTableModule,
     MatFormFieldModule,
+    MatSelectModule,
     AngularMaterialModule
   ],
   providers: [],

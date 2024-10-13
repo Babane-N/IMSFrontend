@@ -9,6 +9,7 @@ import { BarcodeComponent } from '../barcode/barcode.component';
 import { OrderManagementComponent } from '../order-management/order-management.component';
 import { ReportsComponent } from '../reports/reports.component';
 import { UserManagementComponent } from '../user-management/user-management.component';
+import { UserEditComponent } from '../user-edit/user-edit.component';
 import { RemoveInventoryComponent } from '../remove-inventory/remove-inventory.component';
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'order-management', component: OrderManagementComponent },
   { path: 'reports', component: ReportsComponent },
   { path: 'user-management', component: UserManagementComponent },
+  { path: 'user-edit/:id', component: UserEditComponent },
   // Wildcard route for a 404 page
   { path: '**', redirectTo: '/dashboard' }
 ];

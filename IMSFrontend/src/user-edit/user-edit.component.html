@@ -1,0 +1,27 @@
+<div class="edit-user">
+  <form [formGroup]="editForm" (ngSubmit)="submit()">
+    <mat-form-field>
+      <mat-label>Full Name</mat-label>
+      <input matInput formControlName="fullName" />
+      <mat-error *ngIf="editForm.get('fullName')?.invalid && (editForm.get('fullName')?.dirty || editForm.get('fullName')?.touched)">
+        <div *ngIf="editForm.get('fullName')?.errors?.['required']">Full Name is required.</div>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Role</mat-label>
+      <mat-select formControlName="role">
+        <mat-option *ngFor="let role of roles" [value]="role">{{ role }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="editForm.get('role')?.invalid && (editForm.get('role')?.dirty || editForm.get('role')?.touched)">
+        <div *ngIf="editForm.get('role')?.errors?.['required']">Role is required.</div>
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Save</button>
+    <button mat-button (click)="cancel()">Cancel</button>
+  </form>
+</div>
+
+
+

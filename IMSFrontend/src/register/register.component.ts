@@ -13,7 +13,7 @@ import { passwordMatchValidator } from './shared/password-match.directive';
 })
 export class RegisterComponent implements OnInit {
 
-  registerForm!: FormGroup;  // Using non-null assertion
+  registerForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -23,12 +23,12 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Initialize the form here, after fb is initialized
     this.registerForm = this.fb.group({
       fullName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
+      confirmPassword: ['', Validators.required],
+      role: ['', Validators.required]  // Add role control here
     }, {
       validators: passwordMatchValidator
     });
@@ -50,32 +50,28 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.controls['confirmPassword'];
   }
 
+  get role() {
+    return this.registerForm.controls['role'];  // Role getter
+  }
+
   submitDetails() {
     // Extract the form values and remove the confirmPassword field
     const postData = { ...this.registerForm.value };
     delete postData.confirmPassword;
 
-    // Update the subscription to use the new syntax
+    // Send the registration data to the backend
     this.authService.registerUser(postData as User).subscribe({
       next: (response) => {
-        // Log the response for debugging
         console.log(response);
-
-        // Show a success message to the user
         this.messageService.add({
           severity: 'success',
           summary: 'Registration Successful',
           detail: 'You have registered successfully.'
         });
-
-        // Navigate to the login page
         this.router.navigate(['login']);
       },
       error: (err) => {
-        // Log the error for debugging
         console.error('Registration error:', err);
-
-        // Show an error message to the user
         this.messageService.add({
           severity: 'error',
           summary: 'Registration Error',
@@ -85,4 +81,3 @@ export class RegisterComponent implements OnInit {
     });
   }
 }
-
