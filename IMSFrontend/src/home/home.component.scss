@@ -28,13 +28,13 @@ a[mat-button] {
   font-weight: 500;
 }
 
-a[mat-button] .nav-text {
-  margin-left: 8px;
-}
+  a[mat-button] .nav-text {
+    margin-left: 8px;
+  }
 
-a[mat-button] mat-icon {
-  font-size: 20px;
-}
+  a[mat-button] mat-icon {
+    font-size: 20px;
+  }
 
 /* Responsive Design */
 @media (max-width: 768px) {

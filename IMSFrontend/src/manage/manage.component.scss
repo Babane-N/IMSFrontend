@@ -28,13 +28,13 @@ a[mat-button] {
   font-weight: 500;
 }
 
-a[mat-button] .nav-text {
-  margin-left: 8px;
-}
+  a[mat-button] .nav-text {
+    margin-left: 8px;
+  }
 
-a[mat-button] mat-icon {
-  font-size: 20px;
-}
+  a[mat-button] mat-icon {
+    font-size: 20px;
+  }
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -53,36 +53,5 @@ a[mat-button] mat-icon {
   a[mat-button] {
     flex: 1;
     justify-content: center;
-  }
-}
-
-
-.dashboard-container {
-  text-align: center;
-  padding: 20px;
-
-  .stats-section {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-
-    .stat-card {
-      flex: 1;
-      margin: 10px;
-    }
-  }
-
-  .navigation-section {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-  }
-
-  .recent-activities-section, .alerts-section {
-    margin-top: 20px;
-  }
-
-  h3 {
-    margin-bottom: 10px;
   }
 }

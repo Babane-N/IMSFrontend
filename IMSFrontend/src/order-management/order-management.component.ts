@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { OrderService } from './order-service';
 
 @Component({
   selector: 'app-order-management',
@@ -6,21 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order-management.component.scss']
 })
 export class OrderManagementComponent implements OnInit {
-  orders: any[] = []; // Replace with actual data
-  displayedColumns: string[] = ['id', 'customer_id', 'status', 'order_date'];
+  orders: any[] = [];
+  displayedColumns: string[] = ['id', 'customerName', 'status', 'action'];
+  dataSource = new MatTableDataSource<any>();
 
-  constructor() { }
+  constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
-    this.loadOrders();
+    this.loadUsers();
   }
 
-  loadOrders(): void {
-    // Load orders from the service
-    this.orders = [
-      { id: 1234, customerName: 'John Doe', status: 'Pending' },
-      { id: 5678, customerName: 'Jane Smith', status: 'Shipped' }
-    ];
+  loadUsers(): void {
+    this.orderService.getUsers().subscribe((data: any[]) => {
+      this.orders = data;
+
+      this.dataSource = new MatTableDataSource(this.orders);
+    }, error => {
+      console.error('Error loading users:', error);
+    });
   }
 
   viewOrder(orderId: number): void {

@@ -12,11 +12,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MessageService } from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { CardModule } from 'primeng/card'
 import { ButtonModule } from 'primeng/button'
 import { InputTextModule } from 'primeng/inputtext';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+
 
 @NgModule({
   imports: [
@@ -60,6 +60,8 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
     MessageService 
   ],
   declarations: [
+    
+  
     
   ],
 })

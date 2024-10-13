@@ -1,9 +1,9 @@
 <div class="order-management-container">
   <h2>Order Management</h2>
   <mat-table [dataSource]="orders" class="mat-elevation-z8">
-    <ng-container matColumnDef="orderId">
+    <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> Order ID </mat-header-cell>
-      <mat-cell *matCellDef="let order"> {{order.orderId}} </mat-cell>
+      <mat-cell *matCellDef="let order"> {{order.id}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="customerName">

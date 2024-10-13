@@ -2,13 +2,14 @@ const express = require('express');
 const sql = require('mssql');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const bcrypt = require('bcryptjs');
 
 const app = express();
 const port = 40080;
 
 const dbConfig = {
-    server: 'NKHULULEKO\\SQLEXPRESS',
+    user: 'sa',
+    password: 'HoneyPot60!',
+    server: 'babane_n\\SQLEXPRESS',
     database: 'car_parts_business_db',
     options: {
         encrypt: true,
@@ -148,6 +149,7 @@ app.delete('/api/InventoryItems/part-number/:partNumber', (req, res) => {
             });
         }
 
+        // Check if any rows were affected (i.e., if any part was deleted)
         if (result.rowsAffected[0] === 0) {
             console.warn(`Part with part_number ${partNumber} not found.`);
             return res.status(404).json({
@@ -160,66 +162,9 @@ app.delete('/api/InventoryItems/part-number/:partNumber', (req, res) => {
             message: 'Inventory item deleted successfully'
         });
     });
-});
-
-// Register user endpoint
-app.post('/api/register', async (req, res) => {
-    const { fullName, email, password, role } = req.body;
-
-    if (!fullName || !email || !password || !role) {
-        return res.status(400).json({ error: 'All fields are required' });
-    }
-
-    try {
-        // Hash the password
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        // Insert user into the database
-        const query = `
-            INSERT INTO users (fullName, email, password, role)
-            VALUES (@fullName, @email, @password, @role)
-        `;
-        const request = new sql.Request();
-        request.input('fullName', sql.VarChar, fullName);
-        request.input('email', sql.VarChar, email);
-        request.input('password', sql.VarChar, hashedPassword);
-        request.input('role', sql.VarChar, role);
-
-        await request.query(query);
-
-        res.status(201).json({ message: 'User registered successfully' });
-    } catch (error) {
-        console.error('Registration error:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
-
-// Login route
-app.post('/api/login', async (req, res) => {
-    const { email, password } = req.body;
-
-    try {
-        const result = await sql.query`SELECT * FROM users WHERE email = ${email}`;
-        const user = result.recordset[0];
-
-        if (!user) {
-            return res.status(401).json({ error: 'Invalid email or password' });
-        }
-
-        const validPassword = await bcrypt.compare(password, user.password);
-
-        if (!validPassword) {
-            return res.status(401).json({ error: 'Invalid email or password' });
-        }
-
-        res.status(200).json({ message: 'Login successful' });
-    } catch (error) {
-        console.error('Login error:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
+
 

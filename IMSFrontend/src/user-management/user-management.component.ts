@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from '../user.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-management',
@@ -13,7 +12,7 @@ export class UserManagementComponent implements OnInit {
   displayedColumns: string[] = ['username', 'role', 'created_at'];
   dataSource = new MatTableDataSource<any>();
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.loadUsers();
@@ -30,7 +29,7 @@ export class UserManagementComponent implements OnInit {
   }
 
   editUser(userId: number): void {
-    this.router.navigate([`/user-edit/${userId}`]);
+    // Implement user editing functionality
   }
 
   deleteUser(userId: number): void {

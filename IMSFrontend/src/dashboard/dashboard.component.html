@@ -1,3 +1,44 @@
+<header>
+  <mat-toolbar color="primary" class="nav-toolbar">
+
+
+    <!-- Navigation Links -->
+    <nav class="nav-links">
+
+      <a mat-button color="primary" [routerLink]="['/dashboard']">
+        <mat-icon>dashboard</mat-icon>
+        <span class="nav-text">Dashboard</span>
+      </a>
+      <a mat-button color="primary" [routerLink]="['/inventory-list']">
+        <mat-icon>list</mat-icon>
+        <span class="nav-text">Inventory List</span>
+      </a>
+      <a mat-button color="primary" [routerLink]="['/add-edit-inventory']">
+        <mat-icon>edit</mat-icon>
+        <span class="nav-text">Add/Edit Inventory</span>
+      </a>
+      <a mat-button color="primary" [routerLink]="['/remove-inventory']">
+        <mat-icon>delete</mat-icon>
+        <span class="nav-text">Remove Inventory</span>
+      </a>
+      <a mat-button color="primary" [routerLink]="['/order-management']">
+        <mat-icon>shopping_cart</mat-icon>
+        <span class="nav-text">Order Management</span>
+      </a>
+      <a mat-button color="primary" [routerLink]="['/reports']">
+        <mat-icon>assessment</mat-icon>
+        <span class="nav-text">Reports</span>
+      </a>
+      <a mat-button color="primary" [routerLink]="['/user-management']">
+        <mat-icon>group</mat-icon>
+        <span class="nav-text">User Management</span>
+      </a>
+    </nav>
+  </mat-toolbar>
+</header>
+
+
+
 <div class="dashboard-container">
   <!-- Dashboard Title -->
   <h2>Dashboard</h2>

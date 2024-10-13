@@ -1,3 +1,62 @@
+/* General Toolbar Styling */
+.nav-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  background-color: #1976d2; /* Customize as per your primary color */
+}
+
+/* Title or Logo Styling */
+.app-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  margin-right: 24px;
+}
+
+/* Navigation Links Styling */
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+a[mat-button] {
+  margin-right: 12px;
+  color: white;
+  text-transform: none;
+  font-weight: 500;
+}
+
+a[mat-button] .nav-text {
+  margin-left: 8px;
+}
+
+a[mat-button] mat-icon {
+  font-size: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 16px;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 8px;
+  }
+
+  a[mat-button] {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+
 :host {
   display: flex;
   justify-content: center;
