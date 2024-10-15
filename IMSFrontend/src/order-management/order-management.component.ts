@@ -9,7 +9,7 @@ import { OrderService } from './order-service';
 })
 export class OrderManagementComponent implements OnInit {
   orders: any[] = [];
-  displayedColumns: string[] = ['id', 'customerName', 'status', 'action'];
+  displayedColumns: string[] = ['id', 'customerId', 'status', 'action'];
   dataSource = new MatTableDataSource<any>();
 
   constructor(private orderService: OrderService) { }

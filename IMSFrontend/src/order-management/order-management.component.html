@@ -2,13 +2,13 @@
   <h2>Order Management</h2>
   <mat-table [dataSource]="orders" class="mat-elevation-z8">
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> Order ID </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Order Id </mat-header-cell>
       <mat-cell *matCellDef="let order"> {{order.id}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="customerName">
-      <mat-header-cell *matHeaderCellDef> Customer Name </mat-header-cell>
-      <mat-cell *matCellDef="let order"> {{order.customerName}} </mat-cell>
+    <ng-container matColumnDef="customerId">
+      <mat-header-cell *matHeaderCellDef> Customer Id </mat-header-cell>
+      <mat-cell *matCellDef="let order"> {{order.customer_id}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="status">
