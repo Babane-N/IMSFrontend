@@ -23,14 +23,14 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     // Initialize the login form here
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required]],
       password: ['', Validators.required]
     });
   }
 
   // Getter for email field
-  get email() {
-    return this.loginForm.get('email');
+  get username() {
+    return this.loginForm.get('username');
   }
 
   // Getter for password field
@@ -39,24 +39,27 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser() {
-    const { email, password } = this.loginForm.value;
+    const username = this.username?.value;
+    const password = this.password?.value;
 
-    // Assuming getUserByEmail exists and returns an observable list of users with that email
-    this.authService.getUserByEmail(email as string).subscribe({
-      next: (response) => {
-        if (response.length > 0 && response[0].password === password) {
-          sessionStorage.setItem('email', email as string);
-          this.router.navigate(['/home']);
-        } else {
-          this.msgService.add({ severity: 'error', summary: 'Error', detail: 'Email or password is incorrect' });
+    if (username && password) {
+      this.authService.getUserByUsername(username).subscribe({
+        next: (response) => {
+          if (response.length > 0 && response[0].password === password) {
+            sessionStorage.setItem('username', username);
+            console.log('Login successful, navigating to /home');  // Debugging
+            this.router.navigate(['/home']);
+          } else {
+            this.msgService.add({ severity: 'error', summary: 'Error', detail: 'Username or password is incorrect' });
+          }
+        },
+        error: (err) => {
+          this.msgService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });
         }
-      },
-      error: (err) => {
-        this.msgService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });
-      },
-      complete: () => {
-        // Optional completion handling
-      }
-    });
+      });
+    } else {
+      this.msgService.add({ severity: 'error', summary: 'Error', detail: 'Both username and password are required' });
+    }
   }
+
 }

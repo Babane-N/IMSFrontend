@@ -1,17 +1,17 @@
 <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
   <p-card header="Login" [style]="{ width: '360px' }">
     <div class="field">
-      <label for="email">Email</label>
+      <label for="username">Username</label>
       <input type="text"
              pInputText
-             formControlName="email"
+             formControlName="username"
              class="w-full"
-             name="email"
-             placeholder="Type your email" />
-      <small *ngIf="email?.invalid && (email?.dirty || email?.touched)"
+             name="username"
+             placeholder="Type your username" />
+      <small *ngIf="username?.invalid && (username?.dirty || username?.touched)"
              class="block p-error">
-        <span *ngIf="email?.errors?.['required']">Email is required.</span>
-        <span *ngIf="email?.errors?.['email']">Email should be valid</span>
+        <span *ngIf="username?.errors?.['required']">username is required.</span>
+        <span *ngIf="username?.errors?.['username']">username should be valid</span>
       </small>
     </div>
     <div class="field">
