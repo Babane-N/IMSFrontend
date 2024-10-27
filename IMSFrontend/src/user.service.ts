@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from './environments/environment';
+import { User } from './models';
 
 @Injectable({
   providedIn: 'root'
@@ -18,4 +19,13 @@ export class UserService {
   deleteUser(userId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${userId}`);
   }
+
+  editUser(id: number, username: string, role: string): Observable<any> {
+    return this.http.put(`/api/Users/${id}`, { username, role });
+  }
+
+  getRoles(): Observable<string[]> {
+    return this.http.get<string[]>('/api/roles'); // Adjust the API endpoint as necessary
+  }
+
 }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from '../user.service';
+import { MatDialog } from '@angular/material/dialog';
+import { EditUserComponent } from '../edit-user/edit-user.component';
+import { User } from '../models';
 
 @Component({
   selector: 'app-user-management',
@@ -12,7 +15,7 @@ export class UserManagementComponent implements OnInit {
   displayedColumns: string[] = ['username', 'role', 'created_at'];
   dataSource = new MatTableDataSource<any>();
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loadUsers();
@@ -28,8 +31,18 @@ export class UserManagementComponent implements OnInit {
     });
   }
 
-  editUser(userId: number): void {
-    // Implement user editing functionality
+  editUser(user:any): void {
+    const dialogRef = this.dialog.open(EditUserComponent, {
+      width: '400px',
+      data: user
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('User updated:', result);
+        // Optionally refresh the user list or take any other action
+      }
+    });
   }
 
   deleteUser(userId: number): void {

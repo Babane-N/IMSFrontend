@@ -60,9 +60,7 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
     MessageService 
   ],
   declarations: [
-    
-  
-    
+   
   ],
 })
 export class AngularMaterialModule { }

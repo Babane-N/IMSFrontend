@@ -162,7 +162,43 @@ app.delete('/api/InventoryItems/part-number/:partNumber', (req, res) => {
             message: 'Inventory item deleted successfully'
         });
     });
-}); // Added missing closing brace
+});// Added missing closing brace
+
+// Update an existing user
+app.put('/api/Users/:id', async (req, res) => {
+    const id = req.params.id;
+    const { username, role } = req.body;
+
+    // Validate input
+    if (!username || !role) {
+        return res.status(400).json({ error: 'Username and role are required' });
+    }
+
+    // SQL query to update user information
+    const query = `
+        UPDATE users 
+        SET username = @username, role = @role 
+        WHERE id = @id
+    `;
+
+    try {
+        const request = new sql.Request();
+        request.input('id', sql.Int, id);
+        request.input('username', sql.VarChar, username);
+        request.input('role', sql.VarChar, role);
+
+        const result = await request.query(query);
+
+        if (result.rowsAffected[0] === 0) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        res.json({ message: 'User updated successfully' });
+    } catch (err) {
+        console.error('Error updating user:', err);
+        res.status(500).json({ error: 'Internal Server Error', details: err.message });
+    }
+});
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

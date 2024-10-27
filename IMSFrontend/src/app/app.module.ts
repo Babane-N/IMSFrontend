@@ -11,6 +11,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { AngularMaterialModule } from '../angular-material.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +29,7 @@ import { ReportsComponent } from '../reports/reports.component';
 import { UserManagementComponent } from '../user-management/user-management.component';
 import { HomeComponent } from '../home/home.component';
 import { ManageComponent } from '../manage/manage.component';
+import { EditUserComponent } from '../edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +44,7 @@ import { ManageComponent } from '../manage/manage.component';
     OrderManagementComponent,
     ReportsComponent,
     UserManagementComponent,
+    EditUserComponent,
     
     HomeComponent,
     ManageComponent
@@ -58,7 +63,9 @@ import { ManageComponent } from '../manage/manage.component';
     MatIconModule,
     MatTableModule,
     MatFormFieldModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
