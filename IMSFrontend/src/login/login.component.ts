@@ -42,24 +42,40 @@ export class LoginComponent implements OnInit {
     const username = this.username?.value;
     const password = this.password?.value;
 
-    if (username && password) {
-      this.authService.getUserByUsername(username).subscribe({
-        next: (response) => {
-          if (response.length > 0 && response[0].password === password) {
-            sessionStorage.setItem('username', username);
-            console.log('Login successful, navigating to /home');  // Debugging
-            this.router.navigate(['/home']);
-          } else {
-            this.msgService.add({ severity: 'error', summary: 'Error', detail: 'Username or password is incorrect' });
-          }
-        },
-        error: (err) => {
-          this.msgService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });
-        }
-      });
-    } else {
+    // Check if both username and password are provided
+    if (!username || !password) {
       this.msgService.add({ severity: 'error', summary: 'Error', detail: 'Both username and password are required' });
+      return;
     }
+
+    // Fetch user data from the AuthService
+    this.authService.getUserByUsername(username).subscribe({
+      next: (response) => {
+        // Check if user exists and password matches
+        if (response.length > 0 && response[0].password === password) {
+          sessionStorage.setItem('username', username);
+          console.log('Login successful');
+
+          // Redirect based on user role
+          if (username === "ELBaba") {
+            console.log('Navigating to /dashboard');
+            this.router.navigate(['/dashboard']);
+          } else if (username === "JohnSmith") {
+            console.log('Navigating to /manage');
+            this.router.navigate(['/manage']);
+          } else {
+            console.log('Navigating to /home');
+            this.router.navigate(['/home']);
+          }
+        } else {
+          this.msgService.add({ severity: 'error', summary: 'Error', detail: 'Username or password is incorrect' });
+        }
+      },
+      error: () => {
+        this.msgService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });
+      }
+    });
   }
+
 
 }
