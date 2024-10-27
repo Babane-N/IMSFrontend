@@ -22,17 +22,17 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Quantity</mat-label>
-        <input matInput formControlName="quantity" type="number" placeholder="Enter the quantity" />
+        <input matInput formControlName="quantity" type="number" placeholder="Enter the quantity" min="1" />
         <mat-error *ngIf="inventoryForm.controls['quantity'].invalid && (inventoryForm.controls['quantity'].dirty || inventoryForm.controls['quantity'].touched)">
-          Quantity is required.
+          Quantity is required and must be at least 1.
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Price</mat-label>
-        <input matInput formControlName="price" type="number" placeholder="Enter the price" />
+        <input matInput formControlName="price" type="number" placeholder="Enter the price" min="0.01" step="0.01" />
         <mat-error *ngIf="inventoryForm.controls['price'].invalid && (inventoryForm.controls['price'].dirty || inventoryForm.controls['price'].touched)">
-          Price is required.
+          Price is required and must be greater than 0.
         </mat-error>
       </mat-form-field>
 
@@ -46,7 +46,7 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Supplier ID</mat-label>
-        <input matInput formControlName="supplier_id" type="number" placeholder="Enter the supplier ID" />
+        <input matInput formControlName="supplier_id" type="number" placeholder="Enter the supplier ID" min="1" />
         <mat-error *ngIf="inventoryForm.controls['supplier_id'].invalid && (inventoryForm.controls['supplier_id'].dirty || inventoryForm.controls['supplier_id'].touched)">
           Supplier ID is required.
         </mat-error>
@@ -54,7 +54,7 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Category ID</mat-label>
-        <input matInput formControlName="category_id" type="number" placeholder="Enter the category ID" />
+        <input matInput formControlName="category_id" type="number" placeholder="Enter the category ID" min="1" />
         <mat-error *ngIf="inventoryForm.controls['category_id'].invalid && (inventoryForm.controls['category_id'].dirty || inventoryForm.controls['category_id'].touched)">
           Category ID is required.
         </mat-error>
@@ -68,4 +68,3 @@
     </form>
   </mat-card-content>
 </mat-card>
-

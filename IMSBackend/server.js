@@ -30,7 +30,8 @@ app.use(bodyParser.json());
 
 // Fetch inventory items
 app.get('/api/InventoryItems', (req, res) => {
-    sql.request().query('SELECT * FROM inventory', (err, result) => {
+    const request = new sql.Request();
+    request.query('SELECT * FROM inventory', (err, result) => {
         if (err) {
             console.error('Error fetching inventory:', err);
             return res.status(500).json({ error: 'Internal Server Error' });
@@ -65,7 +66,7 @@ app.post('/api/InventoryItems', (req, res) => {
             console.error('Error inserting data:', err);
             return res.status(500).json({ error: 'Internal Server Error' });
         }
-        res.status(201).json({ id: result.recordset.insertId });
+        res.status(201).json({ message: 'Inventory item added successfully' });
     });
 });
 
@@ -149,7 +150,6 @@ app.delete('/api/InventoryItems/part-number/:partNumber', (req, res) => {
             });
         }
 
-        // Check if any rows were affected (i.e., if any part was deleted)
         if (result.rowsAffected[0] === 0) {
             console.warn(`Part with part_number ${partNumber} not found.`);
             return res.status(404).json({
@@ -162,9 +162,8 @@ app.delete('/api/InventoryItems/part-number/:partNumber', (req, res) => {
             message: 'Inventory item deleted successfully'
         });
     });
+}); // Added missing closing brace
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
-
-

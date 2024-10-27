@@ -7,25 +7,25 @@ import { InventoryService } from '../inventory.service';
   styleUrls: ['./remove-inventory.component.scss']
 })
 export class RemoveInventoryComponent {
-  partNumber: string = '';
+  partId: number | null = null; // 
   successMessage: string | null = null;
   errorMessage: string | null = null;
 
   constructor(private inventoryService: InventoryService) { }
 
-  deleteInventoryByPartNumber(): void {
+  deleteInventoryByPartID(): void {
     this.successMessage = null;
     this.errorMessage = null;
 
-    if (this.partNumber) {
-      this.inventoryService.deleteInventoryByPartNumber(this.partNumber).subscribe(
+    if (this.partId !== null && this.partId > 0) {
+      this.inventoryService.deleteInventoryByPartID(this.partId).subscribe(
         () => {
-          this.successMessage = `Part ${this.partNumber} removed successfully.`;
-          this.partNumber = ''; // Reset the input field
+          this.successMessage = `Part ${this.partId} removed successfully.`;
+          this.partId = null; // Reset the input field
         },
         error => {
           console.error('Error removing item', error);
-          this.errorMessage = `Failed to remove part ${this.partNumber}. Please try again.`;
+          this.errorMessage = `Failed to remove part ${this.partId}. Please try again.`;
         }
       );
     } else {
@@ -33,6 +33,5 @@ export class RemoveInventoryComponent {
     }
   }
 }
-
 
 

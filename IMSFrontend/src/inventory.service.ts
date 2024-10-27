@@ -7,7 +7,7 @@ import { Inventory } from './inventory-list/inventory'; // Assuming InventoryIte
   providedIn: 'root'
 })
 export class InventoryService {
-  private baseUrl = 'https://localhost:40043/api/inventory';
+  private baseUrl = 'https://localhost:40443/api/InventoryItems';
 
   constructor(private http: HttpClient) { }
 
@@ -17,7 +17,7 @@ export class InventoryService {
   }
 
   // Fetch a single inventory item by ID
-  getInventoryById(id: number): Observable<Inventory> {
+  getInventoryByID(id: number): Observable<Inventory> {
     return this.http.get<Inventory>(`${this.baseUrl}/${id}`);
   }
 
@@ -37,8 +37,8 @@ export class InventoryService {
   }
 
   // Delete an inventory item by Part Number (assuming the backend supports this)
-  deleteInventoryByPartNumber(partNumber: string): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/part-number/${partNumber}`);
+  deleteInventoryByPartID(partId: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${partId}`);
   }
 }
 
