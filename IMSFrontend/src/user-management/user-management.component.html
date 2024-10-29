@@ -1,29 +1,37 @@
 <div class="user-management-container">
   <h2 class="title">User Management</h2> <!-- Bold Title -->
 
-  <mat-table [dataSource]="users" class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
     <!-- Username Column -->
     <ng-container matColumnDef="username">
-      <mat-header-cell *matHeaderCellDef class="header-cell"> Username </mat-header-cell> <!-- Bold Column Name -->
-      <mat-cell *matCellDef="let user"> {{user.username}} </mat-cell>
+      <th mat-header-cell *matHeaderCellDef> Username </th>
+      <td mat-cell *matCellDef="let user"> {{ user.username }} </td>
     </ng-container>
 
     <!-- Role Column -->
     <ng-container matColumnDef="role">
-      <mat-header-cell *matHeaderCellDef class="header-cell"> Role </mat-header-cell> <!-- Bold Column Name -->
-      <mat-cell *matCellDef="let user"> {{user.role}} </mat-cell>
+      <th mat-header-cell *matHeaderCellDef> Role </th>
+      <td mat-cell *matCellDef="let user"> {{ user.role }} </td>
     </ng-container>
 
     <!-- Created At Column -->
     <ng-container matColumnDef="created_at">
-      <mat-header-cell *matHeaderCellDef class="header-cell">  Action </mat-header-cell> <!-- Bold Column Name -->
-      <mat-cell *matCellDef="let user">
-        <button mat-button color="accent" (click)="editUser(user)">Edit</button>
-        <button mat-button color="warn" (click)="deleteUser(user.id)">Delete</button>
-      </mat-cell>
+      <th mat-header-cell *matHeaderCellDef> Created At </th>
+      <td mat-cell *matCellDef="let user"> {{ user.created_at | date:'short' }} </td>
     </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let user">
+        <button mat-button (click)="editUser(user)">Edit</button>
+        <button mat-button color="warn" (click)="deleteUser(user.id)">Delete</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
 </div>

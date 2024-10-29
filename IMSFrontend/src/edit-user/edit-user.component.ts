@@ -22,8 +22,8 @@ export class EditUserComponent implements OnInit {
   ) {
     this.id = data.id;
     this.editUserForm = this.fb.group({
-      username: [data.username],
-      role: [data.role]
+      username: [data.username, Validators.required],
+      role: [data.role, Validators.required]
     });
   }
 
@@ -45,14 +45,15 @@ export class EditUserComponent implements OnInit {
   onSave(): void {
     if (this.editUserForm.valid) {
       const { username, role } = this.editUserForm.value;
-      this.userService.editUser(this.data.id, username, role) // Using id from data
+      console.log('Submitting form data:', { id: this.data.id, username, role }); // Debugging line
+      this.userService.editUser(this.data.id, username, role)
         .subscribe(
           response => {
-            console.log('User updated successfully', response);
-            this.dialogRef.close(response); // Close the dialog and return updated user data
+            console.log('User updated successfully:', response);
+            this.dialogRef.close(response);
           },
           error => {
-            console.error('Error updating user', error);
+            console.error('Error updating user:', error);
           }
         );
     } else {

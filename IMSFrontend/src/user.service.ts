@@ -21,11 +21,11 @@ export class UserService {
   }
 
   editUser(id: number, username: string, role: string): Observable<any> {
-    return this.http.put(`/api/Users/${id}`, { username, role });
+    return this.http.put(`${this.apiUrl}/${id}`, { username, role });
   }
 
   getRoles(): Observable<string[]> {
-    return this.http.get<string[]>('/api/roles'); // Adjust the API endpoint as necessary
+    return this.http.get<string[]>(`${environment.apiUrl}/roles`); // Adjust endpoint as needed
   }
 
 }

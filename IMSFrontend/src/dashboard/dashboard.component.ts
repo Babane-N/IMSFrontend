@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { InventoryService } from '../inventory.service';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,15 +16,25 @@ export class DashboardComponent implements OnInit {
   recentActivities: any[] = [];
   alerts: any[] = [];
 
-  constructor() { }
+  constructor(private inventoryService: InventoryService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadDashboardData();
   }
 
+  
   loadDashboardData(): void {
-    // Load stats, activities, and alerts here
-    this.totalInventory = 100; 
+    this.inventoryService.getInventoryCount().subscribe(
+      count => {
+        console.log('Fetched inventory count:', count); // Log the fetched count
+        this.totalInventory = count;
+      },
+      error => {
+        console.error('Error loading inventory count:', error);
+      }
+    );
+
+ 
     this.lowStockAlerts = 5; 
     this.totalOrders = 50; 
     this.pendingOrders = 10; 
@@ -34,5 +47,9 @@ export class DashboardComponent implements OnInit {
     this.alerts = [
       { message: 'Low stock on Brake Pads', date: new Date() }
     ];
+  }
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

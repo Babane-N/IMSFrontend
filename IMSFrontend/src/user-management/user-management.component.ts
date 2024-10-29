@@ -12,7 +12,7 @@ import { User } from '../models';
 })
 export class UserManagementComponent implements OnInit {
   users: any[] = [];
-  displayedColumns: string[] = ['username', 'role', 'created_at'];
+  displayedColumns: string[] = ['username', 'role', 'created_at', 'actions'];
   dataSource = new MatTableDataSource<any>();
 
   constructor(private userService: UserService, private dialog: MatDialog) { }

@@ -40,6 +40,10 @@ export class InventoryService {
   deleteInventoryByPartID(partId: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${partId}`);
   }
+
+  getInventoryCount(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/count`);
+  }
 }
 
 

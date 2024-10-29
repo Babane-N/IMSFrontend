@@ -200,6 +200,16 @@ app.put('/api/Users/:id', async (req, res) => {
     }
 });
 
+app.get('/api/inventory/count', async (req, res) => {
+    try {
+        const count = await Inventory.countDocuments(); // Replace with your actual inventory count logic
+        res.json(count);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching inventory count' });
+    }
+});
+
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });

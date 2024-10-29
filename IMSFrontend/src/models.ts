@@ -73,7 +73,7 @@ export interface User {
   id: number;
   username: string;
   password: string;
-  role: 'admin' | 'user';
+  role: string;
   created_at: Date;
 }
 

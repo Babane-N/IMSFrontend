@@ -1,10 +1,7 @@
 <header>
   <mat-toolbar color="primary" class="nav-toolbar">
-
-
     <!-- Navigation Links -->
     <nav class="nav-links">
-
       <a mat-button color="primary" [routerLink]="['/home']">
         <mat-icon></mat-icon>
         <span class="nav-text">Home</span>
@@ -13,8 +10,14 @@
         <mat-icon></mat-icon>
         <span class="nav-text">In Stock</span>
       </a>
+      <!-- Logout Button -->
+      <a mat-button color="primary" [routerLink]="['/logout']">
+        <mat-icon>logout</mat-icon> <!-- Add an icon for logout -->
+        <span class="nav-text">Logout</span>
+      </a>
     </nav>
   </mat-toolbar>
 </header>
 
 <h1>Customer home page!!</h1>
+

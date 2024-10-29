@@ -1,41 +1,37 @@
 <header>
   <mat-toolbar color="primary" class="nav-toolbar">
-
-
     <!-- Navigation Links -->
     <nav class="nav-links">
-
       <a mat-button color="primary" [routerLink]="['/dashboard']">
-        <mat-icon></mat-icon>
         <span class="nav-text">Dashboard</span>
       </a>
       <a mat-button color="primary" [routerLink]="['/inventory-list']">
-        <mat-icon></mat-icon>
         <span class="nav-text">Stock</span>
       </a>
       <a mat-button color="primary" [routerLink]="['/add-edit-inventory']">
-        <mat-icon></mat-icon>
         <span class="nav-text">Add Stock</span>
       </a>
       <a mat-button color="primary" [routerLink]="['/remove-inventory']">
-        <mat-icon></mat-icon>
         <span class="nav-text">Remove Item</span>
       </a>
       <a mat-button color="primary" [routerLink]="['/order-management']">
-        <mat-icon></mat-icon>
         <span class="nav-text">Manage Orders</span>
       </a>
       <a mat-button color="primary" [routerLink]="['/reports']">
-        <mat-icon></mat-icon>
         <span class="nav-text">Reports</span>
       </a>
       <a mat-button color="primary" [routerLink]="['/user-management']">
-        <mat-icon></mat-icon>
         <span class="nav-text">Manage Users</span>
+      </a>
+      <!-- Logout Button -->
+      <a mat-button color="primary" (click)="logout()">
+        <span class="nav-text">Logout</span>
       </a>
     </nav>
   </mat-toolbar>
 </header>
+
+
 
 
 

@@ -12,6 +12,8 @@ import { UserManagementComponent } from '../user-management/user-management.comp
 import { RemoveInventoryComponent } from '../remove-inventory/remove-inventory.component';
 import { HomeComponent } from '../home/home.component';
 import { ManageComponent } from '../manage/manage.component';
+import { LogoutComponent } from '../logout/logout.component'; // Import the LogoutComponent
+import { authGuard } from '../auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -27,6 +29,8 @@ const routes: Routes = [
   { path: 'order-management', component: OrderManagementComponent },
   { path: 'reports', component: ReportsComponent },
   { path: 'user-management', component: UserManagementComponent },
+  { path: 'logout', component: LogoutComponent }, // Add the logout route
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   // Wildcard route for a 404 page
   { path: '**', redirectTo: '/dashboard' }
 ];

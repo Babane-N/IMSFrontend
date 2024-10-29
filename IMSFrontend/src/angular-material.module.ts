@@ -16,6 +16,7 @@ import { CardModule } from 'primeng/card'
 import { ButtonModule } from 'primeng/button'
 import { InputTextModule } from 'primeng/inputtext';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -61,6 +62,8 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
   ],
   declarations: [
    
+  
+    LogoutComponent
   ],
 })
 export class AngularMaterialModule { }
