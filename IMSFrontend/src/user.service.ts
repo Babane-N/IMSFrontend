@@ -25,7 +25,7 @@ export class UserService {
   }
 
   getRoles(): Observable<string[]> {
-    return this.http.get<string[]>(`${environment.apiUrl}/roles`); // Adjust endpoint as needed
+    return this.http.get<string[]>(`${environment.apiUrl}/Users`); // Adjust endpoint as needed
   }
 
 }

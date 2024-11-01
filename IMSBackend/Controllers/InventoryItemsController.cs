@@ -100,16 +100,33 @@ namespace IMSBackend.Controllers
             return NoContent();
         }
 
-        // POST: api/InventoryItems
         [HttpPost]
-        public async Task<ActionResult<InventoryItem>> PostInventoryItem(InventoryItem inventoryItem)
+        public async Task<ActionResult<InventoryItem>> PostInventoryItem(InventoryUp inventoryUp)
         {
+            // Validate the incoming data
+            if (inventoryUp == null || !ModelState.IsValid)
+            {
+                return BadRequest(ModelState); // Return errors if the model state is invalid
+            }
+
+            var inventoryItem = new InventoryItem
+            {
+                part_name = inventoryUp.part_name,
+                part_number = inventoryUp.part_number,
+                quantity = inventoryUp.quantity,
+                price = inventoryUp.price,
+                created_at = DateTime.UtcNow,
+                supplier_id = inventoryUp.supplier_id,
+                category_id = inventoryUp.category_id
+            
+            };
+
             _context.InventoryItems.Add(inventoryItem);
             try
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException ex)
             {
                 if (InventoryItemExists(inventoryItem.id))
                 {
@@ -117,12 +134,13 @@ namespace IMSBackend.Controllers
                 }
                 else
                 {
-                    throw;
+                    throw; // Re-throw to let the middleware handle it
                 }
             }
 
             return CreatedAtAction("GetInventoryItem", new { id = inventoryItem.id }, inventoryItem);
         }
+
 
         // DELETE: api/InventoryItems/5
         [HttpDelete("{id}")]

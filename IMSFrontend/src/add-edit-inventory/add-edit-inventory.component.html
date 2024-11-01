@@ -37,14 +37,6 @@
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Supplier</mat-label>
-        <input matInput formControlName="supplier" placeholder="Enter the supplier" />
-        <mat-error *ngIf="inventoryForm.controls['supplier'].invalid && (inventoryForm.controls['supplier'].dirty || inventoryForm.controls['supplier'].touched)">
-          Supplier is required.
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill">
         <mat-label>Supplier ID</mat-label>
         <input matInput formControlName="supplier_id" type="number" placeholder="Enter the supplier ID" min="1" />
         <mat-error *ngIf="inventoryForm.controls['supplier_id'].invalid && (inventoryForm.controls['supplier_id'].dirty || inventoryForm.controls['supplier_id'].touched)">

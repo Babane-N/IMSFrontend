@@ -27,37 +27,37 @@ namespace IMSBackend.Data
             modelBuilder.Entity<InventoryItem>()
                 .HasOne(i => i.supplier)
                 .WithMany(s => s.supplied_items)
-                .HasForeignKey(i => i.id);
+                .HasForeignKey(i => i.supplier_id);
 
             modelBuilder.Entity<InventoryItem>()
                 .HasOne(i => i.category)
                 .WithMany(c => c.InventoryItems)
-                .HasForeignKey(i => i.id);
+                .HasForeignKey(i => i.category_id);
 
             modelBuilder.Entity<Log>()
                 .HasOne(l => l.user)
                 .WithMany() // Assuming User doesn't have a navigation property for logs
-                .HasForeignKey(l => l.id);
+                .HasForeignKey(l => l.user_id);
 
             modelBuilder.Entity<OrderDetail>()
                 .HasOne(od => od.Order)
                 .WithMany(o => o.OrderDetails)
-                .HasForeignKey(od => od.id);
+                .HasForeignKey(od => od.order_id);
 
             modelBuilder.Entity<OrderDetail>()
                 .HasOne(od => od.InventoryItem)
                 .WithMany() // Assuming InventoryItem doesn't have a navigation property for order details
-                .HasForeignKey(od => od.id);
+                .HasForeignKey(od => od.inventory_id);
 
             modelBuilder.Entity<Order>()
                 .HasOne(o => o.customer)
                 .WithMany(c => c.Orders)
-                .HasForeignKey(o => o.id);
+                .HasForeignKey(o => o.customer_id);
 
             modelBuilder.Entity<StockMovement>()
                 .HasOne(sm => sm.InventoryItem)
                 .WithMany() // Assuming InventoryItem doesn't have a navigation property for stock movements
-                .HasForeignKey(sm => sm.id);
+                .HasForeignKey(sm => sm.inventory_id);
 
             base.OnModelCreating(modelBuilder);
         }

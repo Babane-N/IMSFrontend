@@ -45,14 +45,28 @@ namespace IMSBackend.Controllers
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        public async Task<IActionResult> PutUser(int id, UserUpdate updateUser)
         {
-            if (id != user.id)
+            if (id != updateUser.id)
             {
-                return BadRequest();
+                return BadRequest("User ID mismatch.");
             }
 
-            _context.Entry(user).State = EntityState.Modified;
+            var existingUser = await _context.Users.FindAsync(id);
+            if (existingUser == null)
+            {
+                return NotFound();
+            }
+
+            // Update only fields that are provided in the request
+            existingUser.username = updateUser.username;
+            existingUser.role = updateUser.role;
+
+            // Update password only if a new one is provided
+            if (!string.IsNullOrWhiteSpace(updateUser.password))
+            {
+                existingUser.password = updateUser.password;
+            }
 
             try
             {
@@ -64,10 +78,7 @@ namespace IMSBackend.Controllers
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
             return NoContent();
@@ -76,11 +87,37 @@ namespace IMSBackend.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<User>> PostUser(UserUpdate postUser)
         {
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            if (postUser == null || !ModelState.IsValid)
+            {
+                return BadRequest(ModelState); // Return errors if the model state is invalid
+            }
 
+            var user = new User
+            {
+                username = postUser.username,
+                password = postUser.password,
+                role = postUser.role,
+                created_at = DateTime.UtcNow
+            };
+
+            _context.Users.Add(user);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                if (UserExists(user.id))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw; // Re-throw to let the middleware handle it
+                }
+            }
             return CreatedAtAction("GetUser", new { id = user.id }, user);
         }
 

@@ -10,10 +10,10 @@ interface InventoryItem {
   part_number: string;
   quantity: number;
   price: number;
-  supplier: string;
+  created_at?: Date;
   supplier_id: number;
   category_id: number;
-  created_at?: Date; // Optional, handled on the server side
+
 }
 
 @Component({
@@ -38,11 +38,9 @@ export class AddEditInventoryComponent implements OnInit {
       part_number: ['', Validators.required],
       quantity: [1, [Validators.required, Validators.min(1)]],
       price: [0.01, [Validators.required, Validators.min(0.01)]],
-      supplier: ['', Validators.required],
+      created_at: [Date],
       supplier_id: [null, Validators.required],
       category_id: [null, Validators.required],
-      category: [''],
-      created_at: [null] 
     });
   }
 

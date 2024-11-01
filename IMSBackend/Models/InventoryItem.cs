@@ -26,11 +26,15 @@ namespace IMSBackend.Models
         [Column(TypeName = "decimal(18,2)")] // Specifies decimal type with precision and scale
         public decimal price { get; set; }
 
-        [Required]
-        public int supplier_id { get; set; }
-
         [ForeignKey(nameof(supplier_id))]
         public Supplier supplier { get; set; }
+
+        [Required]
+        [Column(TypeName = "datetime2")] // Specifies SQL Server column type for datetime
+        public DateTime created_at { get; set; }
+
+        [Required]
+        public int supplier_id { get; set; }
 
         [Required]
         public int category_id { get; set; }
@@ -38,8 +42,6 @@ namespace IMSBackend.Models
         [ForeignKey(nameof(category_id))]
         public ProductCategory category { get; set; }
 
-        [Required]
-        [Column(TypeName = "datetime2")] // Specifies SQL Server column type for datetime
-        public DateTime created_at { get; set; }
+    
     }
 }
