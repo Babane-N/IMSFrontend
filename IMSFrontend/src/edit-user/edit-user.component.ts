@@ -12,7 +12,6 @@ import { User } from '../models';
 export class EditUserComponent implements OnInit {
   editUserForm: FormGroup;
   id: number;
-  roles: string[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -22,22 +21,25 @@ export class EditUserComponent implements OnInit {
   ) {
     this.id = data.id;
     this.editUserForm = this.fb.group({
-      username: [data.username, Validators.required],
+      username: ['', Validators.required],
       role: ['', Validators.required]
     });
   }
 
   ngOnInit(): void {
-    this.loadRoles();
+    this.loadUser();
   }
 
-  loadRoles(): void {
-    this.userService.getRoles().subscribe(
-      roles => {
-        this.roles = roles; // Set roles to the fetched values
+  loadUser(): void {
+    this.userService.getUser(this.id).subscribe(
+      (user: User) => {
+        this.editUserForm.patchValue({
+          username: user.username,
+          role: user.role
+        });
       },
       error => {
-        console.error('Error fetching roles:', error);
+        console.error('Error fetching user data:', error);
       }
     );
   }
@@ -45,17 +47,18 @@ export class EditUserComponent implements OnInit {
   onSave(): void {
     if (this.editUserForm.valid) {
       const { username, role } = this.editUserForm.value;
-      console.log('Submitting form data:', { id: this.data.id, username, role }); // Debugging line
-      this.userService.editUser(this.data.id, username, role)
-        .subscribe(
-          response => {
-            console.log('User updated successfully:', response);
-            this.dialogRef.close(response);
-          },
-          error => {
-            console.error('Error updating user:', error);
-          }
-        );
+      // Use the existing password from data or null to not update it
+      const payload = { id: this.id, username, role, password: null };
+
+      this.userService.editUser(this.id, username, payload.password, role).subscribe(
+        response => {
+          console.log('User updated successfully:', response);
+          this.dialogRef.close(response);
+        },
+        error => {
+          console.error('Error updating user:', error);
+        }
+      );
     } else {
       console.error('Form is invalid');
     }

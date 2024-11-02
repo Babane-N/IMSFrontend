@@ -49,6 +49,7 @@ namespace IMSBackend.Data
                 .WithMany() // Assuming InventoryItem doesn't have a navigation property for order details
                 .HasForeignKey(od => od.inventory_id);
 
+
             modelBuilder.Entity<Order>()
                 .HasOne(o => o.customer)
                 .WithMany(c => c.Orders)
