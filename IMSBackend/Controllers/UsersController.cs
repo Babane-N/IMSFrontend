@@ -33,17 +33,14 @@ namespace IMSBackend.Controllers
         public async Task<ActionResult<User>> GetUser(int id)
         {
             var user = await _context.Users.FindAsync(id);
-
             if (user == null)
             {
                 return NotFound();
             }
-
             return user;
         }
 
         // PUT: api/Users/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, UserUpdate updateUser)
         {
@@ -84,14 +81,42 @@ namespace IMSBackend.Controllers
             return NoContent();
         }
 
+        // POST: api/Users/login
+        [HttpPost("login")]
+        public async Task<ActionResult<User>> Login([FromBody] LoginRequest loginRequest)
+        {
+            if (loginRequest == null || string.IsNullOrWhiteSpace(loginRequest.Username) || string.IsNullOrWhiteSpace(loginRequest.Password))
+            {
+                return BadRequest("Username and password are required.");
+            }
+
+            var user = await _context.Users
+                .FirstOrDefaultAsync(u => u.username == loginRequest.Username);
+
+            if (user == null || user.password != loginRequest.Password)
+            {
+                return Unauthorized(); // Invalid credentials
+            }
+
+            // Optionally, exclude sensitive information
+            var responseUser = new User
+            {
+                id = user.id,
+                username = user.username,
+                role = user.role,
+                created_at = user.created_at
+            };
+
+            return Ok(responseUser);
+        }
+
         // POST: api/Users
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(UserUpdate postUser)
         {
             if (postUser == null || !ModelState.IsValid)
             {
-                return BadRequest(ModelState); // Return errors if the model state is invalid
+                return BadRequest(ModelState); 
             }
 
             var user = new User
@@ -115,7 +140,7 @@ namespace IMSBackend.Controllers
                 }
                 else
                 {
-                    throw; // Re-throw to let the middleware handle it
+                    throw; 
                 }
             }
             return CreatedAtAction("GetUser", new { id = user.id }, user);

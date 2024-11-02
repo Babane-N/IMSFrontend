@@ -65,21 +65,19 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  private redirectBasedOnRole(role: string) {
+  private redirectBasedOnRole(role: string): string {
     switch (role) {
       case 'admin':
-        this.router.navigate(['/dashboard']);
-        break;
+        return '/dashboard';
       case 'manager':
-        this.router.navigate(['/manage']);
-        break;
+        return '/manage';
       case 'customer':
-        this.router.navigate(['/home']);
-        break;
+        return '/home';
       default:
-        this.router.navigate(['/home']);
+        return '/home';
     }
   }
+
 }
 
 
