@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { AuthService } from '../auth.service';
+import { User } from '../models';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +11,8 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  loginForm!: FormGroup;  // Non-null assertion, will be initialized in ngOnInit
+  loginForm!: FormGroup;
+  isLoading = false;
 
   constructor(
     private fb: FormBuilder,
@@ -21,61 +22,64 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Initialize the login form here
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', Validators.required]
     });
   }
 
-  // Getter for email field
   get username() {
     return this.loginForm.get('username');
   }
 
-  // Getter for password field
   get password() {
     return this.loginForm.get('password');
   }
 
   loginUser() {
+    this.isLoading = true; // Set loading state
     const username = this.username?.value;
     const password = this.password?.value;
 
-    // Check if both username and password are provided
-    if (!username || !password) {
+    if (this.loginForm.invalid) {
       this.msgService.add({ severity: 'error', summary: 'Error', detail: 'Both username and password are required' });
+      this.isLoading = false; // Reset loading state
       return;
     }
 
-    // Fetch user data from the AuthService
-    this.authService.getUserByUsername(username).subscribe({
-      next: (response) => {
-        // Check if user exists and password matches
-        if (response.length > 0 && response[0].password === password) {
-          sessionStorage.setItem('username', username);
-          console.log('Login successful');
-
-          // Redirect based on user role
-          if (username === "ELBaba") {
-            console.log('Navigating to /dashboard');
-            this.router.navigate(['/dashboard']);
-          } else if (username === "JohnSmith") {
-            console.log('Navigating to /manage');
-            this.router.navigate(['/manage']);
-          } else {
-            console.log('Navigating to /home');
-            this.router.navigate(['/home']);
-          }
-        } else {
-          this.msgService.add({ severity: 'error', summary: 'Error', detail: 'Username or password is incorrect' });
-        }
+    // Call the loginUser method from AuthService
+    this.authService.loginUser(username, password).subscribe({
+      next: (user: User) => {
+        sessionStorage.setItem('username', username);
+        sessionStorage.setItem('role', user.role); // Store user role for navigation
+        console.log('Login successful');
+        this.router.navigate([this.redirectBasedOnRole(user.role)]);
       },
       error: () => {
-        this.msgService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });
+        this.msgService.add({ severity: 'error', summary: 'Error', detail: 'Invalid username or password' });
+        this.isLoading = false; // Reset loading state
+      },
+      complete: () => {
+        this.isLoading = false; // Reset loading state
       }
     });
   }
 
-
+  private redirectBasedOnRole(role: string) {
+    switch (role) {
+      case 'admin':
+        this.router.navigate(['/dashboard']);
+        break;
+      case 'manager':
+        this.router.navigate(['/manage']);
+        break;
+      case 'customer':
+        this.router.navigate(['/home']);
+        break;
+      default:
+        this.router.navigate(['/home']);
+    }
+  }
 }
+
+

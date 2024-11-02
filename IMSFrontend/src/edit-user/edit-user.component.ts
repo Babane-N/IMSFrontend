@@ -23,7 +23,7 @@ export class EditUserComponent implements OnInit {
     this.id = data.id;
     this.editUserForm = this.fb.group({
       username: [data.username, Validators.required],
-      role: [data.role, Validators.required]
+      role: ['', Validators.required]
     });
   }
 

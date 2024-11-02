@@ -13,11 +13,12 @@ import { MatTableModule } from '@angular/material/table';
 import { AngularMaterialModule } from '../angular-material.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
-
+import { DropdownModule } from 'primeng/dropdown';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from '../register/register.component';
 import { LoginComponent } from '../login/login.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { InventoryListComponent } from '../inventory-list/inventory-list.component';
@@ -30,11 +31,11 @@ import { UserManagementComponent } from '../user-management/user-management.comp
 import { HomeComponent } from '../home/home.component';
 import { ManageComponent } from '../manage/manage.component';
 import { EditUserComponent } from '../edit-user/edit-user.component';
+import { RegisterComponent } from '../register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent,
     LoginComponent,
     DashboardComponent,
     InventoryListComponent,
@@ -45,6 +46,7 @@ import { EditUserComponent } from '../edit-user/edit-user.component';
     ReportsComponent,
     UserManagementComponent,
     EditUserComponent,
+    RegisterComponent,
     
     HomeComponent,
     ManageComponent
@@ -65,7 +67,10 @@ import { EditUserComponent } from '../edit-user/edit-user.component';
     MatFormFieldModule,
     AngularMaterialModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    DropdownModule,
+    ButtonModule,
+    CardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
