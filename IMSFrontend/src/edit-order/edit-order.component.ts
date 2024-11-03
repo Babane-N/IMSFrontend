@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { OrderService } from '../order.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Order } from '../models';
-import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-edit-order',
@@ -11,52 +10,59 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./edit-order.component.scss']
 })
 export class EditOrderComponent implements OnInit {
-  editOrderForm!: FormGroup;
-  statusOptions = [
-    { label: 'Pending', value: 'Pending' },
-    { label: 'Completed', value: 'Completed' },
-    { label: 'Cancelled', value: 'Cancelled' }
-  ];
-  orderId!: number;
+  editOrderForm: FormGroup;
+  id: number;
 
   constructor(
     private fb: FormBuilder,
-    private route: ActivatedRoute,
     private orderService: OrderService,
-    private router: Router,
-    private messageService: MessageService
-  ) { }
+    private dialogRef: MatDialogRef<EditOrderComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.id = data.id;
+    this.editOrderForm = this.fb.group({
+      status: ['', Validators.required]
+    });
+  }
 
   ngOnInit(): void {
-    this.orderId = +this.route.snapshot.paramMap.get('id')!;
-    this.editOrderForm = this.fb.group({
-      customer_id: ['', Validators.required],
-      order_date: ['', Validators.required],
-      status: ['', Validators.required],
-      total: ['', [Validators.required, Validators.min(0)]]
-    });
-    this.loadOrderDetails();
+    this.loadOrder();
   }
 
-  loadOrderDetails(): void {
-    this.orderService.getOrderById(this.orderId).subscribe((order: Order) => {
-      this.editOrderForm.patchValue(order);
-    });
-  }
-
-  onSubmit(): void {
-    if (this.editOrderForm.invalid) return;
-
-    const updatedOrder: Order = { id: this.orderId, ...this.editOrderForm.value };
-    this.orderService.updateOrder(updatedOrder).subscribe({
-      next: () => {
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Order updated successfully' });
-        this.router.navigate(['/orders']); // Navigate back to order list or management page
+  loadOrder(): void {
+    this.orderService.getOrder(this.id).subscribe(
+      (order: Order) => {
+        this.editOrderForm.patchValue({
+          status: order.status,
+        });
       },
-      error: () => {
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to update order' });
+      error => {
+        console.error('Error fetching user data:', error);
       }
-    });
+    );
+  }
+
+  onSave(): void {
+    if (this.editOrderForm.valid) {
+      const { status} = this.editOrderForm.value;
+      // Use the existing password from data or null to not update it
+      const payload = { id: this.id, status };
+
+      this.orderService.updateOrder(this.id, status).subscribe(
+        response => {
+          console.log('Order updated successfully:', response);
+          this.dialogRef.close(response);
+        },
+        error => {
+          console.error('Error updating order:', error);
+        }
+      );
+    } else {
+      console.error('Form is invalid');
+    }
+  }
+
+  onCancel(): void {
+    this.dialogRef.close();
   }
 }
-

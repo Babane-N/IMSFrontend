@@ -1,25 +1,17 @@
-<form [formGroup]="editOrderForm" (ngSubmit)="onSubmit()">
-  <p-card header="Edit Order" [style]="{ width: '400px' }">
-    <div class="field">
-      <label for="customer">Customer ID</label>
-      <input type="text" pInputText formControlName="customer_id" class="w-full" placeholder="Customer ID" />
-    </div>
+<h2>Edit Order Details</h2>
+<p>Update the order status by selecting a status from the dropdown menu.</p>
 
-    <div class="field">
-      <label for="orderDate">Order Date</label>
-      <input type="date" pInputText formControlName="order_date" class="w-full" />
-    </div>
+<form [formGroup]="editOrderForm">
 
-    <div class="field">
-      <label for="status">Status</label>
-      <p-dropdown formControlName="status" [options]="statusOptions" placeholder="Select Status"></p-dropdown>
-    </div>
+  <mat-form-field>
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="role">
+      <mat-option value="pending">pending</mat-option>
+      <mat-option value="completed">completed</mat-option>
+      <mat-option value="cancelled">cancelled</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-    <div class="field">
-      <label for="total">Total</label>
-      <input type="number" pInputText formControlName="total" class="w-full" placeholder="Total Amount" />
-    </div>
-
-    <p-button label="Save Changes" styleClass="w-full" type="submit"></p-button>
-  </p-card>
+  <button mat-button (click)="onSave()">Save</button>
+  <button mat-button (click)="onCancel()">Cancel</button>
 </form>

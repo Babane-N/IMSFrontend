@@ -20,6 +20,10 @@ export class OrderService {
     );
   }
 
+  getOrder(id: number): Observable<Order> {
+    return this.http.get<Order>(`${this.apiUrl}/${id}`);
+  }
+
   // Create a new order
   createOrder(order: Order): Observable<Order> {
     return this.http.post<Order>(this.apiUrl, order).pipe(
@@ -35,10 +39,9 @@ export class OrderService {
   }
 
   // Update an order by ID
-  updateOrder(order: Order): Observable<Order> {
-    return this.http.put<Order>(`${this.apiUrl}/${order.id}`, order).pipe(
-      catchError(this.handleError)
-    );
+  updateOrder(id:number, status: string): Observable<Order> {
+    const payload = { id, status};
+    return this.http.put<Order>(`${this.apiUrl}/${id}`, payload);
   }
 
   // Delete an order by ID
