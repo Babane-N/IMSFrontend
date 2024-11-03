@@ -89,7 +89,7 @@ export class AddEditInventoryComponent implements OnInit {
       this.http.put(`https://localhost:40443/api/InventoryItems/${this.inventoryId}`, inventoryData).subscribe(
         response => {
           this.snackBar.open('Inventory item updated successfully!', 'Close', { duration: 3000 });
-          this.router.navigate(['/InventoryItems']); // Redirect after successful update
+          this.router.navigate(['/inventory-list']); // Redirect after successful update
         },
         error => {
           console.error('Error updating inventory item:', error);
@@ -104,7 +104,7 @@ export class AddEditInventoryComponent implements OnInit {
         response => {
           this.snackBar.open('Inventory item added successfully!', 'Close', { duration: 3000 });
           this.inventoryForm.reset();
-          this.router.navigate(['/InventoryItems']); // Redirect after successful addition
+          this.router.navigate(['/inventory-list']); // Redirect after successful addition
         },
         error => {
           console.error('Error adding inventory item:', error);
