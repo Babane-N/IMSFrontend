@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { OrderService } from './order-service';
+import { Order } from '../models';
+import { OrderService } from '../order.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-order-management',
@@ -15,11 +17,11 @@ export class OrderManagementComponent implements OnInit {
   constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
-    this.loadUsers();
+    this.loadOrders();
   }
 
-  loadUsers(): void {
-    this.orderService.getUsers().subscribe((data: any[]) => {
+  loadOrders(): void {
+    this.orderService.getOrders().subscribe((data: any[]) => {
       this.orders = data;
 
       this.dataSource = new MatTableDataSource(this.orders);

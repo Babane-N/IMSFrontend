@@ -15,7 +15,6 @@ export interface Order {
   order_date: Date;
   status: 'pending' | 'completed' | 'cancelled';
   total: number;
-  created_at: Date;
 }
 
 // Order Details Model

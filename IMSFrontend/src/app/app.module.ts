@@ -16,6 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { CalendarModule } from 'primeng/calendar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +33,9 @@ import { HomeComponent } from '../home/home.component';
 import { ManageComponent } from '../manage/manage.component';
 import { EditUserComponent } from '../edit-user/edit-user.component';
 import { RegisterComponent } from '../register/register.component';
+import { PlaceOrderComponent } from '../place-order/place-order.component';
+import { EditOrderComponent } from '../edit-order/edit-order.component';
+
 
 @NgModule({
   declarations: [
@@ -47,6 +51,8 @@ import { RegisterComponent } from '../register/register.component';
     UserManagementComponent,
     EditUserComponent,
     RegisterComponent,
+    PlaceOrderComponent,
+    EditOrderComponent,
     
     HomeComponent,
     ManageComponent
@@ -70,7 +76,8 @@ import { RegisterComponent } from '../register/register.component';
     MatSelectModule,
     DropdownModule,
     ButtonModule,
-    CardModule
+    CardModule,
+    CalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

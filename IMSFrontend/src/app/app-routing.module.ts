@@ -14,6 +14,8 @@ import { HomeComponent } from '../home/home.component';
 import { ManageComponent } from '../manage/manage.component';
 import { LogoutComponent } from '../logout/logout.component'; // Import the LogoutComponent
 import { authGuard } from '../auth.guard';
+import { PlaceOrderComponent } from '../place-order/place-order.component';
+import { EditOrderComponent } from '../edit-order/edit-order.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -26,13 +28,13 @@ const routes: Routes = [
   { path: 'add-edit-inventory', component: AddEditInventoryComponent },
   { path: 'barcode', component: BarcodeComponent }, 
   { path: 'remove-inventory', component: RemoveInventoryComponent },
+  { path: 'place-order', component: PlaceOrderComponent },
+  { path: 'order-management/edit/:id', component: EditOrderComponent },
   { path: 'order-management', component: OrderManagementComponent },
   { path: 'reports', component: ReportsComponent },
   { path: 'user-management', component: UserManagementComponent },
   { path: 'logout', component: LogoutComponent }, // Add the logout route
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  // Wildcard route for a 404 page
-  { path: '**', redirectTo: '/dashboard' }
+  { path: '**', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({

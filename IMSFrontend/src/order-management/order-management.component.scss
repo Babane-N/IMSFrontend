@@ -1,27 +1,25 @@
-.order-management-container {
-  text-align: center;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
 
-  h2 {
-    margin-bottom: 20px;
+  th {
+    background-color: #f0f0f0; // Light grey background for header
+    color: #333; // Dark text color
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid #ccc; // Border below the header
   }
 
-  mat-table {
-    width: 100%;
+  td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd; // Border between rows
+  }
 
-    mat-header-cell {
-      font-weight: bold;
-    }
-
-    mat-cell {
-      font-size: 0.9rem;
-    }
-
-    mat-button {
-      margin-right: 10px;
-    }
+  .table-row:hover {
+    background-color: #f9f9f9; // Highlight row on hover
+  }
+  // Make buttons more distinct
+  .p-button-sm {
+    margin-right: 5px; // Add some space between buttons
   }
 }

@@ -1,0 +1,25 @@
+<form [formGroup]="editOrderForm" (ngSubmit)="onSubmit()">
+  <p-card header="Edit Order" [style]="{ width: '400px' }">
+    <div class="field">
+      <label for="customer">Customer ID</label>
+      <input type="text" pInputText formControlName="customer_id" class="w-full" placeholder="Customer ID" />
+    </div>
+
+    <div class="field">
+      <label for="orderDate">Order Date</label>
+      <input type="date" pInputText formControlName="order_date" class="w-full" />
+    </div>
+
+    <div class="field">
+      <label for="status">Status</label>
+      <p-dropdown formControlName="status" [options]="statusOptions" placeholder="Select Status"></p-dropdown>
+    </div>
+
+    <div class="field">
+      <label for="total">Total</label>
+      <input type="number" pInputText formControlName="total" class="w-full" placeholder="Total Amount" />
+    </div>
+
+    <p-button label="Save Changes" styleClass="w-full" type="submit"></p-button>
+  </p-card>
+</form>

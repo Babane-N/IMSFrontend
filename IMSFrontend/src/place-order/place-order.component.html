@@ -1,0 +1,39 @@
+<p-card header="Place Order" [style]="{ width: '100%' }">
+  <form [formGroup]="orderForm" (ngSubmit)="placeOrder()">
+    <div class="field">
+      <label for="customerId">Customer ID</label>
+      <input id="customerId" type="text" pInputText formControlName="customer_id" />
+      <small *ngIf="orderForm.get('customer_id')?.invalid && (orderForm.get('customer_id')?.dirty || orderForm.get('customer_id')?.touched)" class="p-error">
+        <span *ngIf="orderForm.get('customer_id')?.errors?.['required']">Customer ID is required.</span>
+      </small>
+    </div>
+
+    <div class="field">
+      <label for="status">Order Status</label>
+      <input id="status" type="text" pInputText formControlName="status" />
+      <small *ngIf="orderForm.get('status')?.invalid && (orderForm.get('status')?.dirty || orderForm.get('status')?.touched)" class="p-error">
+        <span *ngIf="orderForm.get('status')?.errors?.['required']">Status is required.</span>
+      </small>
+    </div>
+
+    <div class="field">
+      <label for="total">Total Amount</label>
+      <input id="total" type="number" pInputText formControlName="total" />
+      <small *ngIf="orderForm.get('total')?.invalid && (orderForm.get('total')?.dirty || orderForm.get('total')?.touched)" class="p-error">
+        <span *ngIf="orderForm.get('total')?.errors?.['required']">Total is required.</span>
+        <span *ngIf="orderForm.get('total')?.errors?.['min']">Total must be greater than zero.</span>
+      </small>
+    </div>
+
+    <div class="field">
+      <label for="orderDate">Order Date</label>
+      <p-calendar id="orderDate" formControlName="order_date" [showIcon]="true"></p-calendar>
+      <small *ngIf="orderForm.get('order_date')?.invalid && (orderForm.get('order_date')?.dirty || orderForm.get('order_date')?.touched)" class="p-error">
+        <span *ngIf="orderForm.get('order_date')?.errors?.['required']">Order date is required.</span>
+      </small>
+    </div>
+
+    <p-button label="Place Order" [disabled]="orderForm.invalid" type="submit"></p-button>
+  </form>
+</p-card>
+

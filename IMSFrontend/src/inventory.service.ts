@@ -42,8 +42,9 @@ export class InventoryService {
   }
 
   getInventoryCount(): Observable<number> {
-    return this.http.get<number>(`${this.baseUrl}`);
+    return this.http.get<number>(`${this.baseUrl}/inventory/count`);
   }
+  
 }
 
 
