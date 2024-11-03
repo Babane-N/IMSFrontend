@@ -3,6 +3,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Order } from '../models';
 import { OrderService } from '../order.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-order-management',
@@ -27,6 +29,13 @@ export class OrderManagementComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.orders);
     }, error => {
       console.error('Error loading users:', error);
+    });
+  }
+  deleteOrder(orderId: number): void {
+    this.orderService.deleteOrder(orderId).subscribe(() => {
+      this.loadOrders();
+    }, error => {
+      console.error('Error deleting user:', error);
     });
   }
 

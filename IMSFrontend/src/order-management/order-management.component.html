@@ -20,6 +20,7 @@
       <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
       <mat-cell *matCellDef="let order">
         <button mat-button color="accent" (click)="viewOrder(order.orderId)">View</button>
+        <button mat-button color="warn" (click)="deleteOrder(order.id)">Delete</button>
       </mat-cell>
     </ng-container>
 

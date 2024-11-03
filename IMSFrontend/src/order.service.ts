@@ -43,9 +43,7 @@ export class OrderService {
 
   // Delete an order by ID
   deleteOrder(orderId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${orderId}`).pipe(
-      catchError(this.handleError)
-    );
+    return this.http.delete<void>(`${this.apiUrl}/${orderId}`);
   }
 
   // Error handling method
