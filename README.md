@@ -1,45 +1,46 @@
 # Inventory Management System
 ### A full-stack Inventory Management System built with Angular, ASP.NET Core Web API, and SQL Server. Designed to help businesses efficiently manage inventory items, supplier data, and logs through a responsive, user-friendly interface.
 
-✨ Features
-🔐 Authentication & Authorization
+#### ✨ Features
+#### 🔐 Authentication & Authorization
 
 Role-based access for Admins and Users
 
 Secure login and registration
 
-📦 Inventory Management
+#### 📦 Inventory Management
 
 Add, update, delete, and search inventory items
 
 Track quantity, price, supplier, and part details
 
-🧾 Supplier Management
+#### 🧾 Supplier Management
 
 Add and manage supplier details
 
 Link inventory items to suppliers
 
-📚 Activity Logs
+#### 📚 Activity Logs
 
 Track user actions like inventory edits and deletions
 
-📊 Dashboard Overview
+#### 📊 Dashboard Overview
 
 View summaries of total inventory, suppliers, and system logs
 
-🛠️ Responsive Frontend
+#### 🛠️ Responsive Frontend
 
 Built with Angular and styled for usability on desktop and mobile devices
 
-🧱 Tech Stack
+#### 🧱 Tech Stack
 Layer	Technology
 Frontend	Angular, TypeScript, HTML, CSS
 Backend	ASP.NET Core Web API (C#)
 Database	SQL Server
 Tools	Entity Framework Core, Swagger
 DevOps	Docker (optional), Git/GitHub
-🚀 Getting Started
+
+#### 🚀 Getting Started
 Prerequisites
 .NET SDK
 
@@ -100,7 +101,7 @@ ng serve
 Open in browser:
 http://localhost:4200
 
-📁 Project Structure
+#### 📁 Project Structure
 css
 Copy
 Edit
@@ -118,7 +119,7 @@ Edit
 │   │   ├── services
 │   │   └── models
 └── README.md
-📌 Future Improvements
+####  📌 Future Improvements
 Add user profile management
 
 Generate inventory reports (PDF/CSV)
