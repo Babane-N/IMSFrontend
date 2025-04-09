@@ -1,5 +1,5 @@
 # Inventory Management System
-### A full-stack Inventory Management System built with Angular, ASP.NET Core Web API, and SQL Server. Designed to help businesses efficiently manage inventory items, supplier data, ### and logs through a responsive, user-friendly interface.
+### A full-stack Inventory Management System built with Angular, ASP.NET Core Web API, and SQL Server. Designed to help businesses efficiently manage inventory items, supplier data, and logs through a responsive, user-friendly interface.
 
 ✨ Features
 🔐 Authentication & Authorization
