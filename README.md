@@ -40,92 +40,15 @@ Database	SQL Server
 Tools	Entity Framework Core, Swagger
 DevOps	Docker (optional), Git/GitHub
 
-#### 🚀 Getting Started
-Prerequisites
-.NET SDK
-
-Node.js + Angular CLI
-
-SQL Server
-
-Visual Studio / VS Code
-
-Postman (for testing APIs)
-
-Backend Setup (ASP.NET Core)
-Clone the repo:
-
-bash
-Copy
-Edit
-git clone https://github.com/Babane-N/inventory-management-system.git
-Navigate to the backend folder:
-
-bash
-Copy
-Edit
-cd backend
-Update the appsettings.json with your SQL Server connection string.
-
-Run database migrations:
-
-bash
-Copy
-Edit
-dotnet ef database update
-Start the API:
-
-bash
-Copy
-Edit
-dotnet run
-Frontend Setup (Angular)
-Navigate to the frontend folder:
-
-bash
-Copy
-Edit
-cd frontend
-Install dependencies:
-
-bash
-Copy
-Edit
-npm install
-Start the Angular app:
-
-bash
-Copy
-Edit
-ng serve
-Open in browser:
-http://localhost:4200
-
-#### 📁 Project Structure
-css
-Copy
-Edit
-├── backend
-│   ├── Controllers
-│   ├── Models
-│   ├── DTOs
-│   ├── Services
-│   ├── DataContext.cs
-│   └── Program.cs
-├── frontend
-│   ├── src
-│   │   ├── app
-│   │   ├── components
-│   │   ├── services
-│   │   └── models
-└── README.md
 ####  📌 Future Improvements
 Add user profile management
+![Picture8](https://github.com/user-attachments/assets/5da1e832-7d19-4698-a110-ecfdd2d776c8)
+![Picture5](https://github.com/user-attachments/assets/26b3e984-84b4-4920-a8cb-d253a18aebaf)
+![Picture4](https://github.com/user-attachments/assets/829cfc3d-b588-4bd6-ab3e-7de20b125acd)
+![Picture3](https://github.com/user-attachments/assets/d35a2b60-7b7d-4c77-ab4f-a0235d4741d6)
+![Picture2](https://github.com/user-attachments/assets/dcd09443-eb94-4ebd-aeb6-9f6b9e651069)
+![Picture1](https://github.com/user-attachments/assets/fb233f97-c645-4b37-aac2-f1c4ac6c37fc)
+![Picture7](https://github.com/user-attachments/assets/858f1e6c-198f-4368-b2cb-158d6f84322f)
+![Picture6](https://github.com/user-attachments/assets/b465b421-e679-48fd-8572-70d2127fb058)
 
-Generate inventory reports (PDF/CSV)
 
-Implement email notifications
-
-Add unit testing for frontend and backend
-
-Deploy using Docker containers or cloud services
