@@ -42,13 +42,18 @@ DevOps	Docker (optional), Git/GitHub
 
 ####  📌 Future Improvements
 Add user profile management
-![Picture8](https://github.com/user-attachments/assets/5da1e832-7d19-4698-a110-ecfdd2d776c8)
-![Picture5](https://github.com/user-attachments/assets/26b3e984-84b4-4920-a8cb-d253a18aebaf)
-![Picture4](https://github.com/user-attachments/assets/829cfc3d-b588-4bd6-ab3e-7de20b125acd)
-![Picture3](https://github.com/user-attachments/assets/d35a2b60-7b7d-4c77-ab4f-a0235d4741d6)
-![Picture2](https://github.com/user-attachments/assets/dcd09443-eb94-4ebd-aeb6-9f6b9e651069)
-![Picture1](https://github.com/user-attachments/assets/fb233f97-c645-4b37-aac2-f1c4ac6c37fc)
-![Picture7](https://github.com/user-attachments/assets/858f1e6c-198f-4368-b2cb-158d6f84322f)
-![Picture6](https://github.com/user-attachments/assets/b465b421-e679-48fd-8572-70d2127fb058)
 
+![Picture9](https://github.com/user-attachments/assets/a9cf865c-59be-4bb2-a04c-da78cf429885)
+
+![Picture10](https://github.com/user-attachments/assets/07ed2cfc-c6e8-40b9-b273-fc331f3dc602)
+
+![Picture11](https://github.com/user-attachments/assets/3af774d1-af5b-4750-87dc-b2a9576fdf31)
+![Picture8](https://github.com/user-attachments/assets/086a9554-e1a7-4513-b22e-9c3cdad640c6)
+![Picture4](https://github.com/user-attachments/assets/12dd6b2d-de8a-4c05-996e-a096065165a9)
+![Picture3](https://github.com/user-attachments/assets/b5c60413-782f-4beb-a8ff-de22814aa83b)
+![Picture2](https://github.com/user-attachments/assets/d2a8c41e-995d-414f-9e1b-2149afa0c0a4)
+![Picture1](https://github.com/user-attachments/assets/2f9c14a4-8366-4f34-aadc-a41a34c48276)
+![Picture7](https://github.com/user-attachments/assets/39f2272c-09e0-410b-a5ef-be045864f881)
+![Picture6](https://github.com/user-attachments/assets/d43c1364-3243-48e2-afd2-0207600a53d3)
+![Picture5](https://github.com/user-attachments/assets/97052f7c-60c0-4e7b-80c7-03d10f0f5a3f)
 
